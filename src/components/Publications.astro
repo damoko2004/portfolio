@@ -64,6 +64,13 @@ const t = content[lang];
 </section>
 
 <style>
+  /* Surface blanche : sépare visuellement Publications de la section Contact,
+     qui utilise la même bande teintée. */
+  .section {
+    background: var(--card);
+    border-block: 1px solid var(--rule);
+  }
+
   .pubs {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

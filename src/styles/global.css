@@ -9,23 +9,24 @@
    =========================================================================== */
 
 :root {
-  /* Couleurs */
+  /* Couleurs - identité claire, le vert pin devient l'encre et l'accent */
   --pine: #0e2b28;
   --pine-deep: #082220;
   --pine-mid: #16403b;
   --ink: #142e2a;
-  --ink-2: #4d635e;
-  --ink-3: #7b8f8a;
-  --paper: #f1f3ef;
-  --paper-2: #e7eae5;
+  --ink-2: #4a605b;
+  --ink-3: #74887f;
+  --paper: #f5f6f3;
+  --paper-2: #eaede8;
+  --band: #dae2dc;
   --card: #ffffff;
-  --rule: #d2d9d3;
-  --rule-strong: #a9b6b0;
+  --rule: #d4dbd5;
+  --rule-strong: #a5b3ac;
   --gold: #8f5f0e;
-  --gold-bright: #e0a63f;
-  --on-pine: #e9eee9;
-  --on-pine-2: #9db2ac;
-  --rule-pine: #2c4a45;
+  --gold-bright: #8f5f0e;
+  --on-pine: #142e2a;
+  --on-pine-2: #4a605b;
+  --rule-pine: #bdc9c1;
 
   /* Typographie */
   --serif: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
@@ -125,7 +126,7 @@ p {
 }
 
 ::selection {
-  background: var(--gold-bright);
+  background: #f0d9a8;
   color: var(--pine-deep);
 }
 
@@ -147,8 +148,8 @@ p {
 }
 
 .section--pine {
-  background: var(--pine);
-  color: var(--on-pine);
+  background: var(--band);
+  color: var(--ink);
 }
 
 .section--pine h2,
@@ -227,12 +228,12 @@ p {
 }
 
 .btn--gold {
-  background: var(--gold-bright);
-  color: var(--pine-deep);
+  background: var(--gold);
+  color: #fff;
 }
 
 .btn--gold:hover {
-  background: #f0bd60;
+  background: #744c09;
 }
 
 .btn--ghost-light {
@@ -241,13 +242,13 @@ p {
 }
 
 .btn--ghost-light:hover {
-  border-color: var(--on-pine-2);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--rule-strong);
+  background: var(--paper);
 }
 
 .btn--ink {
   background: var(--pine);
-  color: var(--on-pine);
+  color: var(--paper);
 }
 
 .btn--ink:hover {
@@ -282,9 +283,9 @@ p {
 }
 
 .section--pine .tag {
-  color: var(--on-pine-2);
-  border-color: var(--rule-pine);
-  background: transparent;
+  color: var(--ink-2);
+  border-color: var(--rule-strong);
+  background: var(--card);
 }
 
 /* --- Lien texte ------------------------------------------------------------ */
