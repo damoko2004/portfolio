@@ -1,0 +1,181 @@
+---
+import { content, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<section class="section background" id="parcours">
+  <div class="wrap cols">
+    <div>
+      <h2 class="col__title">{t.experience.earlierTitle}</h2>
+      <ul class="briefs">
+        {
+          t.experience.earlier.map((b) => (
+            <li class="brief">
+              <p class="brief__period">{b.period}</p>
+              <div>
+                <h3>
+                  {b.role}
+                  <span class="brief__org">{b.org}</span>
+                </h3>
+                <p class="brief__desc">{b.desc}</p>
+                <ul class="tags brief__stack">
+                  {b.stack.split(' · ').map((s) => (
+                    <li class="tag">{s}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="col__title">{t.education.title}</h2>
+      <ul class="edu">
+        {
+          t.education.items.map((e) => (
+            <li>
+              <p class="edu__year">{e.year}</p>
+              <div>
+                <h3>{e.title}</h3>
+                <p class="edu__org">{e.org}</p>
+                {e.url && (
+                  <p class="edu__link">
+                    <a class="link" href={e.url} rel="noopener" target="_blank">
+                      {e.urlLabel}
+                    </a>
+                  </p>
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="langs">
+        <p class="langs__title">{t.education.languagesTitle}</p>
+        <p>{t.education.languages}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .background {
+    background: var(--paper-2);
+    border-top: 1px solid var(--rule);
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: var(--sp-6);
+    align-items: start;
+  }
+
+  .col__title {
+    font-size: var(--t-lg);
+    padding-bottom: var(--sp-2);
+    border-bottom: 2px solid var(--pine);
+  }
+
+  .brief,
+  .edu li {
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    gap: var(--sp-3);
+    padding-block: var(--sp-3);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .brief__period,
+  .edu__year {
+    font-size: var(--t-sm);
+    font-weight: 560;
+    color: var(--ink-2);
+  }
+
+  .brief h3,
+  .edu h3 {
+    font-family: var(--sans);
+    font-size: var(--t-sm);
+    font-weight: 620;
+    line-height: 1.4;
+  }
+
+  .brief__org {
+    display: block;
+    font-weight: 420;
+    color: var(--gold);
+  }
+
+  .brief__desc {
+    margin-top: 0.5rem;
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+    line-height: 1.55;
+    max-width: 58ch;
+  }
+
+  .brief__stack {
+    margin-top: 0.6rem;
+  }
+
+  .edu li {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+  }
+
+  .edu__org {
+    margin-top: 0.3rem;
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  .edu__link {
+    margin-top: 0.4rem;
+    font-size: var(--t-xs);
+  }
+
+  .langs {
+    margin-top: var(--sp-4);
+    padding: var(--sp-3);
+    background: var(--card);
+    border-left: 3px solid var(--gold);
+  }
+
+  .langs__title {
+    font-size: var(--t-xs);
+    font-weight: 620;
+    letter-spacing: 0.03em;
+    color: var(--gold);
+    padding-bottom: 0.3rem;
+  }
+
+  .langs p:last-child {
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 62rem) {
+    .cols {
+      grid-template-columns: 1fr;
+      gap: var(--sp-5);
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .brief,
+    .edu li {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+  }
+</style>

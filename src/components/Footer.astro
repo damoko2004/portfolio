@@ -1,0 +1,107 @@
+---
+import { content, links, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+const year = new Date().getFullYear();
+const taglineParts = t.footer.tagline.split(' · ');
+---
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <div>
+      <p class="foot__name">Dikers Amoko</p>
+      <ul class="foot__roles">
+        {taglineParts.map((part) => <li>{part}</li>)}
+      </ul>
+    </div>
+    <nav class="foot__nav" aria-label={t.footer.linksTitle}>
+      <ul>
+        {t.footer.pages.map((page) => <li><a href={page.href}>{page.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <p class="foot__legal">
+      © {year} Dikers Amoko. {t.footer.rights}
+      <span class="foot__built">{t.footer.built}</span>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--pine-deep);
+    color: var(--on-pine-2);
+    border-top: 1px solid var(--rule-pine);
+    padding-block: var(--sp-4);
+  }
+
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--sp-3);
+  }
+
+  .foot__name {
+    font-family: var(--serif);
+    font-size: var(--t-md);
+    color: var(--on-pine);
+  }
+
+  .foot__roles {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+  }
+
+  .foot__roles li {
+    font-size: var(--t-xs);
+    padding-inline: 0.6rem;
+    border-left: 1px solid var(--rule-pine);
+  }
+
+  .foot__roles li:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .foot__nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+  }
+
+  .foot__nav a {
+    font-size: var(--t-xs);
+    color: var(--on-pine-2);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule-pine);
+    padding-bottom: 0.15rem;
+  }
+
+  .foot__nav a:hover {
+    color: var(--on-pine);
+    border-bottom-color: var(--gold-bright);
+  }
+
+  .foot__legal {
+    font-size: var(--t-xs);
+    text-align: right;
+  }
+
+  .foot__built {
+    display: block;
+    color: var(--ink-3);
+  }
+
+  @media (max-width: 48rem) {
+    .foot__legal {
+      text-align: left;
+    }
+  }
+</style>

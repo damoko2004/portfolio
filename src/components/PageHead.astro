@@ -1,0 +1,152 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede: string;
+  facts?: { label: string; value: string }[];
+  availability?: string;
+}
+const { eyebrow, title, lede, facts, availability } = Astro.props;
+---
+
+<section class="pagehead section--pine">
+  <div class="wrap">
+    <p class="pagehead__eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="pagehead__lede">{lede}</p>
+
+    {
+      availability && (
+        <p class="pagehead__avail">
+          <span class="pagehead__dot" aria-hidden="true" />
+          {availability}
+        </p>
+      )
+    }
+
+    {
+      facts && (
+        <dl class="pagehead__facts">
+          {facts.map((f) => (
+            <div>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .pagehead {
+    padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 4vw, 3.5rem);
+    background:
+      radial-gradient(120% 80% at 88% 0%, #16403b 0%, transparent 60%),
+      var(--pine);
+  }
+
+  .pagehead__eyebrow {
+    font-size: var(--t-sm);
+    font-weight: 560;
+    color: var(--gold-bright);
+    padding-bottom: var(--sp-2);
+    border-bottom: 1px solid var(--rule-pine);
+    margin-bottom: var(--sp-3);
+  }
+
+  h1 {
+    font-size: var(--t-2xl);
+    max-width: 22ch;
+  }
+
+  .pagehead__lede {
+    margin-top: var(--sp-3);
+    max-width: 62ch;
+    font-size: var(--t-md);
+    line-height: 1.6;
+    color: var(--on-pine-2);
+  }
+
+  .pagehead__avail {
+    margin-top: var(--sp-3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: var(--t-sm);
+    color: var(--gold-bright);
+  }
+
+  .pagehead__dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--gold-bright);
+  }
+
+  .pagehead__facts {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--rule-pine);
+  }
+
+  .pagehead__facts > div {
+    padding: var(--sp-3) var(--sp-3) 0;
+    border-right: 1px solid var(--rule-pine);
+  }
+
+  .pagehead__facts > div:first-child {
+    padding-left: 0;
+  }
+
+  .pagehead__facts > div:last-child {
+    border-right: 0;
+  }
+
+  .pagehead__facts dt {
+    font-size: var(--t-xs);
+    font-weight: 560;
+    letter-spacing: 0.03em;
+    color: var(--on-pine-2);
+  }
+
+  .pagehead__facts dd {
+    margin: 0.35rem 0 0;
+    font-size: var(--t-sm);
+    line-height: 1.4;
+    color: var(--on-pine);
+  }
+
+  @media (max-width: 62rem) {
+    .pagehead__facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: var(--sp-3);
+    }
+
+    .pagehead__facts > div:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .pagehead__facts > div:nth-child(odd) {
+      padding-left: 0;
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .pagehead__facts {
+      grid-template-columns: 1fr;
+    }
+
+    .pagehead__facts > div {
+      border-right: 0;
+      padding-inline: 0;
+      border-top: 1px solid var(--rule-pine);
+    }
+
+    .pagehead__facts > div:first-child {
+      border-top: 0;
+    }
+  }
+</style>

@@ -1,0 +1,64 @@
+---
+import { content, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<section class="genai">
+  <div class="wrap genai__inner">
+    <div class="genai__text">
+      <h2>{t.genai.title}</h2>
+      <p>{t.genai.body}</p>
+    </div>
+    <ul class="tags genai__tags">
+      {t.genai.tags.map((tag) => <li class="tag">{tag}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .genai {
+    background: var(--paper-2);
+    border-block: 1px solid var(--rule);
+    padding-block: var(--sp-5);
+  }
+
+  .genai__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: var(--sp-5);
+    align-items: start;
+  }
+
+  .genai__text {
+    border-left: 3px solid var(--gold);
+    padding-left: var(--sp-3);
+  }
+
+  .genai__text h2 {
+    font-size: var(--t-xl);
+    max-width: 22ch;
+  }
+
+  .genai__text p {
+    margin-top: var(--sp-3);
+    max-width: var(--measure);
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+
+  .genai__tags {
+    padding-top: 0.5rem;
+  }
+
+  @media (max-width: 62rem) {
+    .genai__inner {
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+  }
+</style>

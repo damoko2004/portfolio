@@ -1,0 +1,312 @@
+---
+import { content, links, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+  altFr?: string;
+  altEn?: string;
+}
+const { lang, altFr = '/', altEn = '/en/' } = Astro.props;
+const t = content[lang];
+const home = lang === 'fr' ? '/' : '/en/';
+const cv = lang === 'fr' ? links.cvFr : links.cvEn;
+
+// Sur une page interne, les ancres doivent repartir vers l'accueil.
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const onHome = path === '/' || path === '/en';
+const resolve = (href: string) => (href.startsWith('#') && !onHome ? `${home}${href}` : href);
+
+// La bascule FR/EN pointe vers l'équivalent de la page courante.
+const otherHref = lang === 'fr' ? altEn : altFr;
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="mark" href={home}>
+      <span class="mark__glyph" aria-hidden="true">DA</span>
+      <span class="mark__name">Dikers Amoko</span>
+    </a>
+
+    <nav class="nav" aria-label={t.nav.menu}>
+      <ul>
+        {
+          t.nav.items.map((item) => (
+            <li>
+              <a href={resolve(item.href)} data-navlink={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="tail">
+      <a class="lang" href={otherHref} hreflang={lang === 'fr' ? 'en' : 'fr'}>
+        {lang === 'fr' ? 'EN' : 'FR'}
+      </a>
+      <a class="cv" href={cv} download>{t.nav.cv}</a>
+      <button
+        class="burger"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-burger
+      >
+        <span class="visually-hidden">{t.nav.menu}</span>
+        <span class="burger__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile" id="mobile-nav" hidden aria-label={t.nav.menu}>
+    <ul>
+      {
+        t.nav.items.map((item) => (
+          <li>
+            <a href={resolve(item.href)}>{item.label}</a>
+          </li>
+        ))
+      }
+      <li>
+        <a href={cv} download>{t.nav.cv}</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  // --- Menu mobile ---------------------------------------------------------
+  const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
+  const panel = document.getElementById('mobile-nav');
+
+  const setOpen = (open: boolean) => {
+    if (!burger || !panel) return;
+    burger.setAttribute('aria-expanded', String(open));
+    panel.hidden = !open;
+    document.documentElement.classList.toggle('is-locked', open);
+  };
+
+  burger?.addEventListener('click', () => {
+    setOpen(burger.getAttribute('aria-expanded') !== 'true');
+  });
+
+  panel?.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).tagName === 'A') setOpen(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setOpen(false);
+  });
+
+  // --- Section active dans la navigation -----------------------------------
+  const linkFor = new Map<string, HTMLAnchorElement>();
+  document.querySelectorAll<HTMLAnchorElement>('[data-navlink]').forEach((a) => {
+    const id = a.dataset.navlink?.replace('#', '');
+    if (id) linkFor.set(id, a);
+  });
+
+  const sections = [...linkFor.keys()]
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => Boolean(el));
+
+  if (sections.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = linkFor.get(entry.target.id);
+          if (link) link.classList.toggle('is-current', entry.isIntersecting);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>
+
+<style is:global>
+  html.is-locked {
+    overflow: hidden;
+  }
+</style>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--pine) 93%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule-pine);
+    color: var(--on-pine);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    min-height: 4rem;
+  }
+
+  .mark {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    text-decoration: none;
+    margin-right: auto;
+  }
+
+  .mark__glyph {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--gold-bright);
+    border-bottom: 2px solid var(--gold-bright);
+    line-height: 1.1;
+  }
+
+  .mark__name {
+    font-size: var(--t-sm);
+    font-weight: 500;
+    color: var(--on-pine);
+  }
+
+  .nav ul {
+    display: flex;
+    gap: 1.4rem;
+  }
+
+  .nav a {
+    font-size: var(--t-sm);
+    font-weight: 420;
+    color: var(--on-pine-2);
+    text-decoration: none;
+    padding-block: 0.4rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .nav a:hover,
+  .nav a.is-current {
+    color: var(--on-pine);
+    border-bottom-color: var(--gold-bright);
+  }
+
+  .tail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .lang {
+    font-size: var(--t-xs);
+    font-weight: 620;
+    letter-spacing: 0.06em;
+    color: var(--on-pine-2);
+    text-decoration: none;
+    border: 1px solid var(--rule-pine);
+    padding: 0.3rem 0.5rem;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .lang:hover {
+    color: var(--on-pine);
+    border-color: var(--on-pine-2);
+  }
+
+  .cv {
+    font-size: var(--t-xs);
+    font-weight: 560;
+    color: var(--pine-deep);
+    background: var(--gold-bright);
+    text-decoration: none;
+    padding: 0.45rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  .cv:hover {
+    background: #f0bd60;
+  }
+
+  .burger {
+    display: none;
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--rule-pine);
+    cursor: pointer;
+    place-items: center;
+  }
+
+  .burger__bars,
+  .burger__bars::before,
+  .burger__bars::after {
+    display: block;
+    width: 1rem;
+    height: 1px;
+    background: var(--on-pine);
+  }
+
+  .burger__bars::before,
+  .burger__bars::after {
+    content: '';
+    position: relative;
+  }
+
+  .burger__bars::before {
+    top: -5px;
+  }
+
+  .burger__bars::after {
+    top: 4px;
+  }
+
+  .burger[aria-expanded='true'] {
+    border-color: var(--gold-bright);
+  }
+
+  .mobile {
+    border-top: 1px solid var(--rule-pine);
+    background: var(--pine);
+    padding: var(--sp-2) var(--gutter) var(--sp-3);
+    max-height: calc(100dvh - 4rem);
+    overflow-y: auto;
+  }
+
+  .mobile a {
+    display: block;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule-pine);
+    font-size: var(--t-md);
+    color: var(--on-pine);
+    text-decoration: none;
+  }
+
+  @media (max-width: 62rem) {
+    .nav {
+      display: none;
+    }
+
+    .burger {
+      display: grid;
+    }
+  }
+
+  @media (min-width: 62.01rem) {
+    .mobile {
+      display: none;
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .mark__name {
+      display: none;
+    }
+
+    .cv {
+      display: none;
+    }
+  }
+</style>

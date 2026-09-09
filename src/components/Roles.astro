@@ -1,0 +1,102 @@
+---
+import { content, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<section class="section" id="profil">
+  <div class="wrap">
+    <div class="head">
+      <h2>{t.roles.title}</h2>
+      <p class="prose">{t.roles.intro}</p>
+    </div>
+
+    <div class="grid">
+      {
+        t.roles.items.map((item) => (
+          <article class="role">
+            <h3>{item.title}</h3>
+            <p class="role__desc">{item.desc}</p>
+            <ul class="role__points">
+              {item.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="more">
+      <a class="link" href={lang === 'fr' ? '/prestations/' : '/en/services/'}>
+        {t.roles.servicesLink}
+      </a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--sp-4);
+  }
+
+  .role {
+    border-top: 3px solid var(--pine);
+    padding-top: var(--sp-3);
+  }
+
+  .role h3 {
+    font-size: var(--t-lg);
+    font-weight: 480;
+  }
+
+  .role__desc {
+    margin-top: var(--sp-2);
+    color: var(--ink-2);
+    font-size: var(--t-sm);
+    line-height: 1.58;
+  }
+
+  .role__points {
+    margin-top: var(--sp-3);
+    border-top: 1px solid var(--rule);
+  }
+
+  .role__points li {
+    padding: 0.6rem 0 0.6rem 1.1rem;
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--t-sm);
+    line-height: 1.45;
+    position: relative;
+  }
+
+  .role__points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    width: 0.4rem;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .more {
+    margin-top: var(--sp-4);
+    padding-top: var(--sp-3);
+    border-top: 1px solid var(--rule);
+    font-size: var(--t-sm);
+  }
+
+  @media (max-width: 62rem) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-5);
+    }
+  }
+</style>

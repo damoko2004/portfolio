@@ -1,0 +1,186 @@
+---
+import { content, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<section class="section section--pine" id="publications">
+  <div class="wrap">
+    <div class="head">
+      <h2>{t.publications.title}</h2>
+      <p class="prose">{t.publications.intro}</p>
+    </div>
+
+    <div class="pubs">
+      {
+        t.publications.items.map((item) => (
+          <article class="pub">
+            <p class="pub__kind">
+              <span>{item.kind}</span>
+              <span class="pub__year">{item.year}</span>
+            </p>
+            <h3>{item.title}</h3>
+            <p class="pub__sub">{item.subtitle}</p>
+            <p class="pub__desc">{item.desc}</p>
+            <ul class="pub__facts">
+              {item.facts.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+            <div class="pub__links">
+              {item.url && (
+                <a class="link pub__cta" href={item.url} rel="noopener" target="_blank">
+                  {item.cta}
+                </a>
+              )}
+              {item.extra && (
+                <ul class="pub__extra">
+                  {item.extra.map((x) => (
+                    <li>
+                      <a href={x.url} rel="noopener" target="_blank">
+                        {x.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="pubs__note">
+      {t.publications.note}
+      <a class="link" href={t.publications.noteUrl} rel="noopener" target="_blank">
+        {t.publications.noteCta}
+      </a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .pubs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--sp-4);
+  }
+
+  .pub {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid var(--gold-bright);
+    padding-top: var(--sp-3);
+  }
+
+  .pub__kind {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--sp-2);
+    font-size: var(--t-xs);
+    font-weight: 560;
+    letter-spacing: 0.03em;
+    color: var(--gold-bright);
+  }
+
+  .pub__year {
+    color: var(--on-pine-2);
+    font-weight: 420;
+  }
+
+  .pub h3 {
+    margin-top: var(--sp-2);
+    font-size: var(--t-lg);
+    font-weight: 460;
+  }
+
+  .pub__sub {
+    margin-top: 0.3rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--t-md);
+    color: var(--on-pine-2);
+    line-height: 1.3;
+  }
+
+  .pub__desc {
+    margin-top: var(--sp-3);
+    font-size: var(--t-sm);
+    line-height: 1.58;
+    color: var(--on-pine-2);
+  }
+
+  .pub__facts {
+    margin-top: var(--sp-3);
+    border-top: 1px solid var(--rule-pine);
+  }
+
+  .pub__facts li {
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--rule-pine);
+    font-size: var(--t-xs);
+    font-weight: 480;
+    letter-spacing: 0.01em;
+    color: var(--on-pine);
+  }
+
+  .pub__links {
+    margin-top: var(--sp-3);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--sp-2);
+  }
+
+  .pub__cta {
+    font-size: var(--t-sm);
+  }
+
+  .pub__extra {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .pub__extra li {
+    padding-inline: 0.6rem;
+    border-left: 1px solid var(--rule-pine);
+  }
+
+  .pub__extra li:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .pub__extra a {
+    font-size: var(--t-xs);
+    color: var(--on-pine-2);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .pub__extra a:hover {
+    color: var(--on-pine);
+  }
+
+  .pubs__note {
+    margin-top: var(--sp-4);
+    padding-top: var(--sp-3);
+    border-top: 1px solid var(--rule-pine);
+    font-size: var(--t-sm);
+    color: var(--on-pine-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 62rem) {
+    .pubs {
+      grid-template-columns: 1fr;
+      gap: var(--sp-5);
+    }
+  }
+</style>

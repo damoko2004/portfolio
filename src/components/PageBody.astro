@@ -1,0 +1,27 @@
+---
+import Hero from './Hero.astro';
+import Chain from './Chain.astro';
+import Roles from './Roles.astro';
+import GenAI from './GenAI.astro';
+import Experience from './Experience.astro';
+import Publications from './Publications.astro';
+import Skills from './Skills.astro';
+import Background from './Background.astro';
+import Contact from './Contact.astro';
+import type { Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<Hero lang={lang} />
+<Chain lang={lang} />
+<Roles lang={lang} />
+<GenAI lang={lang} />
+<Experience lang={lang} />
+<Publications lang={lang} />
+<Skills lang={lang} />
+<Background lang={lang} />
+<Contact lang={lang} />

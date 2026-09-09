@@ -1,0 +1,244 @@
+---
+import PageHead from './PageHead.astro';
+import EmailMock from './EmailMock.astro';
+import { caseRte } from '../data/case-rte';
+import { routes, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = caseRte[lang];
+const r = routes[lang];
+---
+
+<PageHead eyebrow={c.eyebrow} title={c.title} lede={c.lede} facts={c.facts} />
+
+<section class="notice">
+  <div class="wrap notice__inner">
+    <h2>{c.confidentiality.title}</h2>
+    <div class="notice__body">
+      {c.confidentiality.body.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</section>
+
+<article class="section">
+  <div class="wrap">
+    {
+      c.sections.map((section) => (
+        <section class="chunk">
+          <div class="chunk__rail">
+            <h2>{section.title}</h2>
+          </div>
+          <div class="chunk__body">
+            {section.body.map((p) => (
+              <p class="chunk__p">{p}</p>
+            ))}
+            {'list' in section && section.list && (
+              <dl class="items">
+                {section.list.map((item) => (
+                  <div class="item">
+                    <dt>{item.title}</dt>
+                    <dd>{item.body}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+          </div>
+        </section>
+      ))
+    }
+
+    <EmailMock mock={c.mock} />
+
+    <section class="transfer">
+      <h2>{c.transferTitle}</h2>
+      <div class="transfer__body">
+        {c.transfer.map((p) => <p>{p}</p>)}
+      </div>
+      <div class="stack">
+        <p class="stack__label">{c.stackTitle}</p>
+        <ul class="tags">
+          {c.stack.map((s) => <li class="tag">{s}</li>)}
+        </ul>
+      </div>
+    </section>
+  </div>
+</article>
+
+<section class="section section--pine">
+  <div class="wrap cta">
+    <div>
+      <h2>{c.cta.title}</h2>
+      <p class="prose cta__body">{c.cta.body}</p>
+    </div>
+    <p class="cta__actions">
+      <a class="btn btn--gold" href={`${r.home}#contact`}>{c.cta.button}</a>
+      <a class="btn btn--ghost-light" href={`${r.home}#missions`}>{c.cta.back}</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .notice {
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--rule);
+    padding-block: var(--sp-4);
+  }
+
+  .notice__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
+    gap: var(--sp-4);
+    border-left: 3px solid var(--gold);
+    padding-left: var(--sp-3);
+  }
+
+  .notice h2 {
+    font-size: var(--t-lg);
+    max-width: 18ch;
+  }
+
+  .notice__body {
+    display: grid;
+    gap: var(--sp-2);
+    max-width: var(--measure);
+  }
+
+  .notice__body p {
+    font-size: var(--t-sm);
+    line-height: 1.62;
+    color: var(--ink-2);
+  }
+
+  .chunk {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    gap: var(--sp-4);
+    padding-block: var(--sp-4);
+    border-top: 1px solid var(--rule);
+  }
+
+  .chunk:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .chunk__rail h2 {
+    font-size: var(--t-lg);
+    position: sticky;
+    top: 6rem;
+  }
+
+  .chunk__body {
+    max-width: var(--measure);
+  }
+
+  .chunk__p {
+    font-size: var(--t-md);
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+
+  .chunk__p + .chunk__p {
+    margin-top: var(--sp-2);
+  }
+
+  .items {
+    margin-top: var(--sp-3);
+    border-top: 1px solid var(--rule);
+  }
+
+  .item {
+    padding-block: var(--sp-3);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .item dt {
+    font-size: var(--t-sm);
+    font-weight: 620;
+    line-height: 1.4;
+  }
+
+  .item dd {
+    margin: 0.4rem 0 0;
+    font-size: var(--t-sm);
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .transfer {
+    margin-top: var(--sp-5);
+    padding-top: var(--sp-4);
+    border-top: 2px solid var(--pine);
+  }
+
+  .transfer h2 {
+    font-size: var(--t-lg);
+  }
+
+  .transfer__body {
+    margin-top: var(--sp-3);
+    display: grid;
+    gap: var(--sp-2);
+    max-width: var(--measure);
+  }
+
+  .transfer__body p {
+    font-size: var(--t-md);
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+
+  .stack {
+    margin-top: var(--sp-4);
+  }
+
+  .stack__label {
+    font-size: var(--t-xs);
+    font-weight: 620;
+    letter-spacing: 0.03em;
+    color: var(--gold);
+    padding-bottom: 0.5rem;
+  }
+
+  .cta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--sp-4);
+    align-items: end;
+  }
+
+  .cta h2 {
+    font-size: var(--t-xl);
+    max-width: 20ch;
+  }
+
+  .cta__body {
+    margin-top: var(--sp-2);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 62rem) {
+    .notice__inner,
+    .chunk,
+    .cta {
+      grid-template-columns: 1fr;
+      gap: var(--sp-3);
+    }
+
+    .chunk__rail h2 {
+      position: static;
+    }
+
+    .cta {
+      align-items: start;
+    }
+  }
+</style>

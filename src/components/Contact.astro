@@ -1,0 +1,168 @@
+---
+import { content, links, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+const cv = lang === 'fr' ? links.cvFr : links.cvEn;
+---
+
+<section class="section section--pine contact" id="contact">
+  <div class="wrap contact__grid">
+    <div>
+      <h2>{t.contact.title}</h2>
+      <p class="prose contact__lead">{t.contact.lead}</p>
+      <p class="contact__avail">
+        <span class="contact__dot" aria-hidden="true"></span>
+        {t.contact.availability}
+      </p>
+    </div>
+
+    <div class="contact__panel">
+      <dl class="coords">
+        <div>
+          <dt>{t.contact.emailLabel}</dt>
+          <dd><a class="link" href={`mailto:${links.email}`}>{links.email}</a></dd>
+        </div>
+        <div>
+          <dt>{t.contact.phoneLabel}</dt>
+          <dd><a class="link" href={`tel:${links.phone}`}>{links.phoneDisplay}</a></dd>
+        </div>
+        <div>
+          <dt>{t.contact.locationLabel}</dt>
+          <dd>{t.contact.location}</dd>
+        </div>
+        {
+          links.linkedin && (
+            <div>
+              <dt>{t.contact.linkedinLabel}</dt>
+              <dd>
+                <a class="link" href={links.linkedin} rel="noopener" target="_blank">
+                  /in/dikers-amoko
+                </a>
+              </dd>
+            </div>
+          )
+        }
+      </dl>
+
+      <div class="contact__actions">
+        <a class="btn btn--gold" href={`mailto:${links.email}`}>{t.contact.emailLabel}</a>
+        <button
+          class="btn btn--ghost-light"
+          type="button"
+          data-copy={links.email}
+          data-label={t.contact.copy}
+          data-done={t.contact.copied}
+        >
+          {t.contact.copy}
+        </button>
+        <a class="btn btn--ghost-light" href={cv} download>{t.contact.cvLabel}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('button[data-copy]');
+  button?.addEventListener('click', async () => {
+    const address = button.dataset.copy;
+    if (!address) return;
+    try {
+      await navigator.clipboard.writeText(address);
+      button.textContent = button.dataset.done ?? 'OK';
+      button.setAttribute('aria-live', 'polite');
+      setTimeout(() => {
+        button.textContent = button.dataset.label ?? '';
+      }, 2200);
+    } catch {
+      window.location.href = `mailto:${address}`;
+    }
+  });
+</script>
+
+<style>
+  .contact__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    gap: var(--sp-6);
+    align-items: start;
+  }
+
+  .contact h2 {
+    font-size: var(--t-2xl);
+    max-width: 16ch;
+  }
+
+  .contact__lead {
+    margin-top: var(--sp-3);
+  }
+
+  .contact__avail {
+    margin-top: var(--sp-4);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: var(--t-sm);
+    color: var(--gold-bright);
+  }
+
+  .contact__dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--gold-bright);
+  }
+
+  .contact__panel {
+    border-top: 2px solid var(--gold-bright);
+    padding-top: var(--sp-3);
+  }
+
+  .coords > div {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: var(--sp-2);
+    padding-block: 0.7rem;
+    border-bottom: 1px solid var(--rule-pine);
+  }
+
+  .coords dt {
+    font-size: var(--t-xs);
+    font-weight: 560;
+    letter-spacing: 0.03em;
+    color: var(--on-pine-2);
+    align-self: center;
+  }
+
+  .coords dd {
+    margin: 0;
+    font-size: var(--t-sm);
+    color: var(--on-pine);
+    align-self: center;
+    word-break: break-word;
+  }
+
+  .contact__actions {
+    margin-top: var(--sp-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 62rem) {
+    .contact__grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .coords > div {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

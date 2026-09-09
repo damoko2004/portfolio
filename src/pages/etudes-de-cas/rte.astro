@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseRteBody from '../../components/CaseRteBody.astro';
+import { caseRte } from '../../data/case-rte';
+import { routes } from '../../data/content';
+const c = caseRte.fr;
+---
+
+<Base
+  lang="fr"
+  title={c.meta.title}
+  description={c.meta.description}
+  altFr={routes.fr.caseRte}
+  altEn={routes.en.caseRte}
+>
+  <CaseRteBody lang="fr" />
+</Base>

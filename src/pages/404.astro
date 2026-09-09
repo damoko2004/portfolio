@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base lang="fr">
+  <section class="section notfound">
+    <div class="wrap">
+      <p class="code">404</p>
+      <h1>Cette page n’existe pas</h1>
+      <p class="prose">
+        Le lien est peut-être obsolète. Revenez à l’accueil pour retrouver les missions,
+        les publications et les coordonnées.
+      </p>
+      <p class="actions">
+        <a class="btn btn--ink" href="/">Retour à l’accueil</a>
+        <a class="btn btn--ghost" href="/en/">English version</a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound {
+    min-height: 60vh;
+    display: grid;
+    align-items: center;
+  }
+
+  .code {
+    font-family: var(--serif);
+    font-size: var(--t-2xl);
+    color: var(--gold);
+  }
+
+  h1 {
+    margin-top: var(--sp-2);
+    font-size: var(--t-xl);
+  }
+
+  .prose {
+    margin-top: var(--sp-3);
+  }
+
+  .actions {
+    margin-top: var(--sp-4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+</style>

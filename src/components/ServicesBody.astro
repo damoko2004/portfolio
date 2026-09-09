@@ -1,0 +1,305 @@
+---
+import PageHead from './PageHead.astro';
+import { services } from '../data/services';
+import { routes, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const s = services[lang];
+const r = routes[lang];
+---
+
+<PageHead eyebrow={s.eyebrow} title={s.title} lede={s.lede} availability={s.availability} />
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="block__title">{s.offersTitle}</h2>
+
+    <div class="offers">
+      {
+        s.offers.map((offer) => (
+          <article class="offer">
+            <div class="offer__head">
+              <h3>{offer.title}</h3>
+              <p class="offer__duration">{offer.duration}</p>
+            </div>
+            <p class="offer__pitch">{offer.pitch}</p>
+            <ul class="offer__list">
+              {offer.deliverables.map((d) => (
+                <li>{d}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section principles">
+  <div class="wrap">
+    <h2 class="block__title">{s.principlesTitle}</h2>
+    <dl class="grid-2">
+      {
+        s.principles.map((p) => (
+          <div class="principle">
+            <dt>{p.title}</dt>
+            <dd>{p.body}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap two">
+    <div>
+      <h2 class="block__title">{s.processTitle}</h2>
+      <ol class="steps">
+        {
+          s.process.map((step, i) => (
+            <li>
+              <span class="steps__n" aria-hidden="true">
+                {i + 1}
+              </span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <div>
+      <h2 class="block__title">{s.practicalTitle}</h2>
+      <dl class="practical">
+        {
+          s.practical.map((p) => (
+            <div>
+              <dt>{p.label}</dt>
+              <dd>{p.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section section--pine">
+  <div class="wrap cta">
+    <div>
+      <h2>{s.cta.title}</h2>
+      <p class="prose cta__body">{s.cta.body}</p>
+    </div>
+    <p class="cta__actions">
+      <a class="btn btn--gold" href={`${r.home}#contact`}>{s.cta.button}</a>
+      <a class="btn btn--ghost-light" href={r.caseRte}>{s.cta.caseLink}</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .block__title {
+    font-size: var(--t-xl);
+    padding-bottom: var(--sp-2);
+    border-bottom: 2px solid var(--pine);
+  }
+
+  .offers {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-4) var(--sp-5);
+    padding-top: var(--sp-4);
+  }
+
+  .offer {
+    border-top: 1px solid var(--rule-strong);
+    padding-top: var(--sp-3);
+  }
+
+  .offer__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem var(--sp-2);
+  }
+
+  .offer h3 {
+    font-size: var(--t-lg);
+    font-weight: 470;
+    max-width: 22ch;
+  }
+
+  .offer__duration {
+    font-size: var(--t-xs);
+    font-weight: 560;
+    letter-spacing: 0.02em;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .offer__pitch {
+    margin-top: var(--sp-2);
+    font-size: var(--t-sm);
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .offer__list {
+    margin-top: var(--sp-3);
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .offer__list li {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: var(--t-sm);
+    line-height: 1.5;
+  }
+
+  .offer__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62rem;
+    width: 0.45rem;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .principles {
+    background: var(--paper-2);
+    border-block: 1px solid var(--rule);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 var(--sp-5);
+    padding-top: var(--sp-3);
+  }
+
+  .principle {
+    padding-block: var(--sp-3);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .principle dt {
+    font-family: var(--serif);
+    font-size: var(--t-md);
+    line-height: 1.25;
+  }
+
+  .principle dd {
+    margin: 0.5rem 0 0;
+    font-size: var(--t-sm);
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .two {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: var(--sp-6);
+    align-items: start;
+  }
+
+  .steps {
+    padding-top: var(--sp-3);
+  }
+
+  .steps li {
+    display: grid;
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    gap: var(--sp-2);
+    padding-block: var(--sp-3);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .steps__n {
+    font-family: var(--serif);
+    font-size: var(--t-lg);
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .steps h3 {
+    font-family: var(--sans);
+    font-size: var(--t-sm);
+    font-weight: 620;
+  }
+
+  .steps p {
+    margin-top: 0.35rem;
+    font-size: var(--t-sm);
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .practical {
+    padding-top: var(--sp-3);
+  }
+
+  .practical > div {
+    padding-block: var(--sp-2);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .practical dt {
+    font-size: var(--t-xs);
+    font-weight: 620;
+    letter-spacing: 0.03em;
+    color: var(--gold);
+  }
+
+  .practical dd {
+    margin: 0.3rem 0 0;
+    font-size: var(--t-sm);
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+
+  .cta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--sp-4);
+    align-items: end;
+  }
+
+  .cta h2 {
+    font-size: var(--t-xl);
+    max-width: 20ch;
+  }
+
+  .cta__body {
+    margin-top: var(--sp-2);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 62rem) {
+    .offers,
+    .grid-2,
+    .two,
+    .cta {
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+
+    .cta {
+      align-items: start;
+    }
+  }
+</style>

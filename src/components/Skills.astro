@@ -1,0 +1,132 @@
+---
+import { content, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<section class="section" id="competences">
+  <div class="wrap">
+    <div class="head">
+      <h2>{t.skills.title}</h2>
+      <p class="prose">{t.skills.intro}</p>
+    </div>
+
+    <dl class="groups">
+      {
+        t.skills.groups.map((g) => (
+          <div class="group">
+            <dt>{g.name}</dt>
+            <dd>{g.body}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="stack">
+      <h3>{t.skills.stackTitle}</h3>
+      <div class="stack__grid">
+        {
+          t.skills.stack.map((s) => (
+            <div class="stack__col">
+              <p class="stack__name">{s.name}</p>
+              <ul>
+                {s.items.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .groups {
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .group {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    gap: var(--sp-4);
+    padding-block: var(--sp-3);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .group dt {
+    font-size: var(--t-sm);
+    font-weight: 620;
+    line-height: 1.35;
+  }
+
+  .group dd {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: var(--t-sm);
+    line-height: 1.6;
+    max-width: var(--measure);
+  }
+
+  .stack {
+    margin-top: var(--sp-5);
+    background: var(--pine);
+    color: var(--on-pine);
+    padding: var(--sp-4);
+  }
+
+  .stack h3 {
+    font-size: var(--t-md);
+    font-weight: 480;
+    color: var(--on-pine);
+    padding-bottom: var(--sp-3);
+    border-bottom: 1px solid var(--rule-pine);
+  }
+
+  .stack__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--sp-4);
+    padding-top: var(--sp-3);
+  }
+
+  .stack__name {
+    font-size: var(--t-xs);
+    font-weight: 560;
+    letter-spacing: 0.03em;
+    color: var(--gold-bright);
+    padding-bottom: 0.4rem;
+  }
+
+  .stack__col ul {
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .stack__col li {
+    font-size: var(--t-sm);
+    color: var(--on-pine);
+  }
+
+  @media (max-width: 62rem) {
+    .group {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+
+    .stack__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .stack__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

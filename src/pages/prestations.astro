@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import ServicesBody from '../components/ServicesBody.astro';
+import { services } from '../data/services';
+import { routes } from '../data/content';
+const s = services.fr;
+---
+
+<Base
+  lang="fr"
+  title={s.meta.title}
+  description={s.meta.description}
+  altFr={routes.fr.services}
+  altEn={routes.en.services}
+>
+  <ServicesBody lang="fr" />
+</Base>

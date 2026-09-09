@@ -1,0 +1,378 @@
+---
+import { Image } from 'astro:assets';
+import { content, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+const roleParts = t.hero.title.split(' · ');
+
+// Portrait facultatif : déposez une image dans src/assets/portrait.jpg
+// (ou .png / .webp / .avif) et elle apparaît automatiquement, optimisée par
+// Astro. Tant qu'aucun fichier n'est présent, le monogramme s'affiche.
+const found = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/portrait.{jpg,jpeg,png,webp,avif}',
+  { eager: true }
+);
+const portrait = Object.values(found)[0]?.default;
+---
+
+<section class="hero section--pine" id="start">
+  <div class="wrap">
+    <p class="badge reveal" style="--delay: .05s">
+      <span class="badge__dot" aria-hidden="true"></span>
+      {t.hero.available}
+    </p>
+
+    <div class="ident reveal" style="--delay: .12s">
+      <h1>{t.hero.name}</h1>
+      <ul class="roles">
+        {roleParts.map((part) => <li>{part}</li>)}
+      </ul>
+    </div>
+
+    <p class="statement">
+      {
+        t.hero.verbs.map((verb, i) => (
+          <span class="statement__line reveal" style={`--delay: ${0.28 + i * 0.11}s`}>
+            <span class="statement__mark" aria-hidden="true"></span>
+            {verb}
+          </span>
+        ))
+      }
+    </p>
+
+    <div class="below">
+      <p class="lead reveal" style="--delay: .68s">{t.hero.lead}</p>
+
+      <div class="hero__actions reveal" style="--delay: .76s">
+        <a class="btn btn--gold" href="#missions">{t.hero.ctaPrimary}</a>
+        <a class="btn btn--ghost-light" href="#contact">{t.hero.ctaSecondary}</a>
+      </div>
+    </div>
+
+    <figure class="portrait reveal" style="--delay: .8s">
+      {
+        portrait ? (
+          <Image
+            src={portrait}
+            alt={`${t.hero.name} — ${t.hero.title}`}
+            widths={[280, 560]}
+            sizes="(max-width: 62rem) 60vw, 300px"
+            loading="eager"
+          />
+        ) : (
+          <div class="portrait__monogram" aria-hidden="true">
+            <span>DA</span>
+          </div>
+        )
+      }
+    </figure>
+
+    <dl class="facts reveal" style="--delay: .84s">
+      {
+        t.hero.facts.map((f) => (
+          <div class="facts__item">
+            <dt>{f.label}</dt>
+            <dd>{f.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 7vw, 6rem) clamp(2.5rem, 5vw, 4rem);
+    background:
+      radial-gradient(120% 80% at 88% 0%, #16403b 0%, transparent 60%),
+      var(--pine);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: var(--t-xs);
+    font-weight: 520;
+    letter-spacing: 0.04em;
+    color: var(--gold-bright);
+    border: 1px solid var(--rule-pine);
+    padding: 0.35rem 0.7rem;
+  }
+
+  .badge__dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--gold-bright);
+  }
+
+  .ident {
+    margin-top: var(--sp-4);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem 1.5rem;
+    padding-bottom: var(--sp-2);
+    border-bottom: 1px solid var(--rule-pine);
+  }
+
+  h1 {
+    font-size: var(--t-xl);
+    font-weight: 460;
+    letter-spacing: 0.01em;
+  }
+
+  .roles {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .roles li {
+    font-size: var(--t-sm);
+    color: var(--on-pine-2);
+    padding-inline: 0.75rem;
+    border-left: 1px solid var(--rule-pine);
+  }
+
+  .roles li:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  /* La déclaration : l'élément mémorable de la page. */
+  .statement {
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    font-family: var(--serif);
+    font-size: var(--t-3xl);
+    font-weight: 380;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+
+  .statement__line {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(0.7rem, 2vw, 1.6rem);
+  }
+
+  .statement__line:nth-child(2) {
+    padding-left: clamp(0rem, 4vw, 4rem);
+  }
+
+  .statement__line:nth-child(3) {
+    padding-left: clamp(0rem, 6vw, 6rem);
+    color: var(--gold-bright);
+  }
+
+  .statement__mark {
+    flex: none;
+    width: clamp(1rem, 4vw, 3.5rem);
+    height: 1px;
+    background: var(--rule-pine);
+    align-self: center;
+  }
+
+  .statement__line:nth-child(3) .statement__mark {
+    background: var(--gold-bright);
+  }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'badge portrait'
+      'ident portrait'
+      'statement portrait'
+      'below portrait'
+      'facts facts';
+    align-items: start;
+    column-gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .badge {
+    grid-area: badge;
+    justify-self: start;
+  }
+
+  .ident {
+    grid-area: ident;
+  }
+
+  .statement {
+    grid-area: statement;
+  }
+
+  .below {
+    grid-area: below;
+  }
+
+  .portrait {
+    grid-area: portrait;
+    align-self: end;
+    width: clamp(13rem, 22vw, 18rem);
+    margin: 0;
+    position: relative;
+  }
+
+  .portrait::before {
+    content: '';
+    position: absolute;
+    inset: -0.7rem -0.7rem 0.7rem 0.7rem;
+    border: 1px solid var(--gold-bright);
+    pointer-events: none;
+  }
+
+  .portrait :global(img) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.05);
+    position: relative;
+  }
+
+  .portrait__monogram {
+    aspect-ratio: 4 / 5;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(160deg, var(--pine-mid), var(--pine-deep));
+    border: 1px solid var(--rule-pine);
+    position: relative;
+  }
+
+  .portrait__monogram span {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 380;
+    color: var(--gold-bright);
+    letter-spacing: 0.04em;
+    border-bottom: 2px solid var(--gold-bright);
+    padding-bottom: 0.15em;
+    line-height: 1;
+  }
+
+  .below {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    display: grid;
+    gap: var(--sp-4);
+    align-items: end;
+  }
+
+  .lead {
+    max-width: 56ch;
+    color: var(--on-pine-2);
+    font-size: var(--t-md);
+    line-height: 1.6;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .facts {
+    grid-area: facts;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--rule-pine);
+  }
+
+  .facts__item {
+    padding: var(--sp-3) var(--sp-3) 0 0;
+    border-right: 1px solid var(--rule-pine);
+    padding-left: var(--sp-3);
+  }
+
+  .facts__item:first-child {
+    padding-left: 0;
+  }
+
+  .facts__item:last-child {
+    border-right: 0;
+  }
+
+  .facts dt {
+    font-size: var(--t-xs);
+    font-weight: 560;
+    letter-spacing: 0.03em;
+    color: var(--on-pine-2);
+  }
+
+  .facts dd {
+    margin: 0.35rem 0 0;
+    font-family: var(--serif);
+    font-size: var(--t-lg);
+    line-height: 1.2;
+    color: var(--on-pine);
+  }
+
+  @media (max-width: 62rem) {
+    .wrap {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'badge'
+        'ident'
+        'statement'
+        'portrait'
+        'below'
+        'facts';
+    }
+
+    .portrait {
+      width: min(60vw, 15rem);
+      margin-top: var(--sp-4);
+    }
+
+    .below {
+      align-items: start;
+    }
+
+    .facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .facts__item:nth-child(2) {
+      border-right: 0;
+    }
+
+    .facts__item:nth-child(odd) {
+      padding-left: 0;
+    }
+
+    .facts__item:nth-child(n + 3) {
+      border-top: 1px solid var(--rule-pine);
+      margin-top: var(--sp-3);
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .statement__mark {
+      display: none;
+    }
+
+    .statement__line {
+      gap: 0;
+    }
+
+    .facts {
+      grid-template-columns: 1fr;
+    }
+
+    .facts__item {
+      border-right: 0;
+      padding-left: 0;
+    }
+
+    .facts__item + .facts__item {
+      border-top: 1px solid var(--rule-pine);
+      margin-top: var(--sp-2);
+    }
+  }
+</style>

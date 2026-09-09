@@ -1,0 +1,187 @@
+---
+import { content, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<section class="section" id="missions">
+  <div class="wrap">
+    <div class="head">
+      <h2>{t.experience.title}</h2>
+      <p class="prose">{t.experience.intro}</p>
+    </div>
+
+    <div class="jobs">
+      {
+        t.experience.jobs.map((job) => (
+          <article class="job">
+            <div class="job__rail">
+              <p class="job__period">
+                {job.period}
+                {job.current && <span class="job__now">{lang === 'fr' ? 'en cours' : 'current'}</span>}
+              </p>
+              <p class="job__org">{job.org}</p>
+              <p class="job__sector">{job.sector}</p>
+            </div>
+
+            <div class="job__body">
+              <h3>{job.role}</h3>
+              <p class="job__context">{job.context}</p>
+              <ul class="job__bullets">
+                {job.bullets.map((b) => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+              <ul class="tags job__stack">
+                {job.stack.map((s) => (
+                  <li class="tag">{s}</li>
+                ))}
+              </ul>
+              {job.caseUrl && (
+                <p class="job__case">
+                  <a class="link" href={job.caseUrl}>
+                    {job.caseLabel}
+                  </a>
+                </p>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .jobs {
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .job {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    gap: var(--sp-4);
+    padding-block: var(--sp-5);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .job:last-child {
+    border-bottom: 0;
+  }
+
+  .job__rail {
+    align-self: start;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .job__period {
+    font-size: var(--t-sm);
+    font-weight: 560;
+    color: var(--ink);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .job__now {
+    font-size: var(--t-xs);
+    font-weight: 520;
+    color: var(--pine-deep);
+    background: var(--gold-bright);
+    padding: 0.05rem 0.4rem;
+  }
+
+  .job__org {
+    margin-top: 0.5rem;
+    font-family: var(--serif);
+    font-size: var(--t-lg);
+    line-height: 1.15;
+  }
+
+  .job__sector {
+    margin-top: 0.35rem;
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--gold);
+  }
+
+  .job__body h3 {
+    font-size: var(--t-lg);
+    font-weight: 480;
+    max-width: 34ch;
+  }
+
+  .job__context {
+    margin-top: var(--sp-2);
+    color: var(--ink-2);
+    font-size: var(--t-sm);
+    max-width: var(--measure);
+  }
+
+  .job__bullets {
+    margin-top: var(--sp-3);
+    display: grid;
+    gap: 0.85rem;
+    max-width: var(--measure);
+  }
+
+  .job__bullets li {
+    position: relative;
+    padding-left: 1.4rem;
+    line-height: 1.55;
+    font-size: var(--t-sm);
+  }
+
+  .job__bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62rem;
+    width: 0.7rem;
+    height: 1px;
+    background: var(--rule-strong);
+  }
+
+  .job__stack {
+    margin-top: var(--sp-3);
+  }
+
+  .job__case {
+    margin-top: var(--sp-3);
+    padding-top: var(--sp-2);
+    border-top: 1px solid var(--rule);
+    max-width: var(--measure);
+    font-size: var(--t-sm);
+  }
+
+  @media (max-width: 62rem) {
+    .job {
+      grid-template-columns: 1fr;
+      gap: var(--sp-3);
+      padding-block: var(--sp-4);
+    }
+
+    .job__rail {
+      position: static;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 1rem;
+      padding-bottom: var(--sp-2);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .job__org,
+    .job__sector,
+    .job__period {
+      margin-top: 0;
+    }
+  }
+</style>
