@@ -43,6 +43,7 @@ export const routes = {
     cases: '/etudes-de-cas/',
     caseRte: '/etudes-de-cas/rte/',
     caseLcl: '/etudes-de-cas/lcl/',
+    caseYubora: '/etudes-de-cas/yubora/',
     background: '/parcours/',
     legal: '/mentions-legales/',
   },
@@ -52,6 +53,7 @@ export const routes = {
     cases: '/en/case-studies/',
     caseRte: '/en/case-studies/rte/',
     caseLcl: '/en/case-studies/lcl/',
+    caseYubora: '/en/case-studies/yubora/',
     background: '/en/background/',
     legal: '/en/legal-notice/',
   },
@@ -124,14 +126,14 @@ const fr = {
     skip: 'Aller au contenu',
   },
   hero: {
-    available: 'Freelance - disponible immédiatement',
+    available: 'Freelance - disponible pour une nouvelle mission',
     name: 'Dikers Amoko',
-    title: 'Data Scientist senior · MLOps · Product Owner Data & IA',
+    title: 'Data Scientist senior · Industrialisation · Product Owner Data & IA',
     verbs: ['Je cadre le besoin.', 'Je conçois le modèle.', 'Je le mets en production.'],
     lead:
       'Dix ans sur la chaîne complète de la donnée, en banque, énergie, statistique publique et SaaS. Trois métiers que l’on confie d’ordinaire à trois personnes, tenus par une seule - avec la culture de traçabilité et de reproductibilité héritée de la banque et de la statistique publique.',
     ctaPrimary: 'Voir les missions',
-    ctaSecondary: 'Me contacter',
+    ctaSecondary: 'Réserver un échange',
     facts: [
       { label: 'Expérience', value: '10 ans' },
       { label: 'Secteurs', value: 'Banque, énergie, statistique publique, SaaS' },
@@ -251,6 +253,8 @@ const fr = {
         ],
         stack: ['SQL', 'R', 'Python', 'Power BI', 'API REST', 'Git', 'CRM'],
         current: true,
+        caseUrl: '/etudes-de-cas/yubora/',
+        caseLabel: 'Lire l’étude de cas détaillée',
       },
       {
         period: '06/2024 - 12/2025',
@@ -266,6 +270,8 @@ const fr = {
           'Industrialisation & recette - industrialisation des reportings Power BI et des traitements automatisés ; recettes fonctionnelles, contrôles de complétude, suivi des anomalies jusqu’à la mise en production.',
         ],
         stack: ['SQL', 'Teradata', 'SAS', 'R', 'Dataiku', 'Power BI', 'VBA'],
+        caseUrl: '/etudes-de-cas/lcl/',
+        caseLabel: 'Lire l’étude de cas détaillée',
       },
       {
         period: '02/2023 - 01/2024',
@@ -277,6 +283,7 @@ const fr = {
         bullets: [
           'Besoin & conception - recueil du besoin auprès des experts métier ; conception des KPI, des traitements statistiques et des règles de détection d’anomalies.',
           'Développement & mise en production - application R Shiny d’analyse des flux d’import-export d’électricité et de supervision des interconnexions, déployée et stabilisée en production sur RStudio Connect.',
+          'Prévision - modèles produisant les grandeurs manquantes jusqu’à J+1, afin que la revue du matin porte sur une journée complète plutôt que sur des trous.',
           'Run, monitoring & alerting - automatisation de l’ingestion via API, contrôles qualité en continu, alertes automatisées vers les experts, correction des incidents en production.',
           'Transfert - documentation de la solution et accompagnement des équipes d’exploitation à la reprise.',
         ],
@@ -316,7 +323,7 @@ const fr = {
         role: 'Ingénieur Data',
         org: 'SAUR, Serris / Paris',
         desc:
-          'Outil de fiabilisation des données terrain : contrôles de cohérence, workflows de validation, traçabilité des corrections ; machine learning, détection d’anomalies et automatisation des reportings opérationnels.',
+          'Chef de projet IT et ingénieur data sur un outil de fiabilisation des données terrain : contrôles de cohérence, relances automatiques, niveaux de validation, modèles prédisant les erreurs à venir ; participation à la feuille de route applicative et migration de services de R vers Python.',
         stack: 'R · Python · SQL Server · SSRS · Power BI · Tableau · Git',
       },
       {
@@ -324,7 +331,7 @@ const fr = {
         role: 'Consultant Data Science',
         org: 'Soft Computing, Paris',
         desc:
-          'Analyse de campagnes CRM, segmentation, scoring, mesure d’impact et de ROI, recommandations de ciblage et de pression marketing.',
+          'Études CRM et connaissance client pour des annonceurs, dont la mesure de l’impact et du chiffre d’affaires additionnel généré par les opérations adhérents d’un grand distributeur. Segmentation, scoring, recommandations de ciblage et de pression marketing.',
         stack: 'R · IBM SPSS Modeler',
       },
       {
@@ -457,7 +464,7 @@ const fr = {
     title: 'Parlons de votre chaîne de données',
     lead:
       'Un besoin métier encore flou, un modèle qui ne passe pas en production, une plateforme IA à cadrer ou à challenger : dites-moi où vous en êtes, je vous dis en une conversation ce qui est réaliste.',
-    availability: 'Disponible immédiatement - Île-de-France et à distance',
+    availability: 'Disponible pour une nouvelle mission - Île-de-France et à distance',
     emailLabel: 'E-mail',
     phoneLabel: 'Téléphone',
     locationLabel: 'Localisation',
@@ -468,7 +475,7 @@ const fr = {
     copied: 'Adresse copiée',
   },
   footer: {
-    tagline: 'Data Scientist senior · MLOps · Product Owner Data & IA',
+    tagline: 'Data Scientist senior · Industrialisation · Product Owner Data & IA',
     rights: 'Tous droits réservés.',
     built: 'Site construit avec Astro.',
     linksTitle: 'Aller à',
@@ -506,14 +513,14 @@ const en: typeof fr = {
     skip: 'Skip to content',
   },
   hero: {
-    available: 'Freelance - available now',
+    available: 'Freelance - available for a new engagement',
     name: 'Dikers Amoko',
-    title: 'Senior Data Scientist · MLOps · Data & AI Product Owner',
+    title: 'Senior Data Scientist · Industrialisation · Data & AI Product Owner',
     verbs: ['I frame the need.', 'I build the model.', 'I ship it to production.'],
     lead:
       'Ten years across the full data chain, in banking, energy, official statistics and SaaS. Three jobs usually handed to three different people, held by one - with the traceability and reproducibility culture that banking and official statistics demand.',
     ctaPrimary: 'See the work',
-    ctaSecondary: 'Get in touch',
+    ctaSecondary: 'Book a call',
     facts: [
       { label: 'Experience', value: '10 years' },
       { label: 'Sectors', value: 'Banking, energy, official statistics, SaaS' },
@@ -633,6 +640,8 @@ const en: typeof fr = {
         ],
         stack: ['SQL', 'R', 'Python', 'Power BI', 'REST API', 'Git', 'CRM'],
         current: true,
+        caseUrl: '/en/case-studies/yubora/',
+        caseLabel: 'Read the detailed case study',
       },
       {
         period: '06/2024 - 12/2025',
@@ -647,6 +656,8 @@ const en: typeof fr = {
           'Industrialisation & acceptance - industrialising Power BI reporting and automated processing; functional acceptance testing, completeness checks, anomaly tracking through to production.',
         ],
         stack: ['SQL', 'Teradata', 'SAS', 'R', 'Dataiku', 'Power BI', 'VBA'],
+        caseUrl: '/en/case-studies/lcl/',
+        caseLabel: 'Read the detailed case study',
       },
       {
         period: '02/2023 - 01/2024',
@@ -658,6 +669,7 @@ const en: typeof fr = {
         bullets: [
           'Needs & design - requirements gathering with domain experts; design of KPIs, statistical processing and anomaly detection rules.',
           'Development & deployment - an R Shiny application analysing electricity import-export flows and monitoring interconnections, deployed and stabilised in production on RStudio Connect.',
+          'Forecasting - models producing the missing quantities up to D+1, so the morning review covers a full day rather than gaps.',
           'Run, monitoring & alerting - API ingestion automation, continuous quality controls, automated alerts to domain experts, production incident resolution.',
           'Handover - solution documentation and support to the operations teams taking over.',
         ],
@@ -697,7 +709,7 @@ const en: typeof fr = {
         role: 'Data Engineer',
         org: 'SAUR, Serris / Paris',
         desc:
-          'Field data reliability tool: consistency checks, validation workflows, correction traceability; machine learning, anomaly detection and operational reporting automation.',
+          'IT project manager and data engineer on a field data reliability tool: consistency checks, automatic reminders, validation levels, models predicting upcoming errors; contribution to the application roadmap and migration of services from R to Python.',
         stack: 'R · Python · SQL Server · SSRS · Power BI · Tableau · Git',
       },
       {
@@ -705,7 +717,7 @@ const en: typeof fr = {
         role: 'Data Science Consultant',
         org: 'Soft Computing, Paris',
         desc:
-          'CRM campaign analysis, segmentation, scoring, impact and ROI measurement, targeting and marketing pressure recommendations.',
+          'CRM and customer knowledge studies for advertisers, including measuring the impact and incremental revenue of a major retailer’s membership campaigns. Segmentation, scoring, targeting and marketing pressure recommendations.',
         stack: 'R · IBM SPSS Modeler',
       },
       {
@@ -837,7 +849,7 @@ const en: typeof fr = {
     title: 'Let’s talk about your data chain',
     lead:
       'A business need that is still fuzzy, a model that never reaches production, an AI platform to frame or to challenge: tell me where you stand and I will tell you in one conversation what is realistic.',
-    availability: 'Available now - Paris region and remote',
+    availability: 'Available for a new engagement - Paris region and remote',
     emailLabel: 'Email',
     phoneLabel: 'Phone',
     locationLabel: 'Location',
@@ -848,7 +860,7 @@ const en: typeof fr = {
     copied: 'Address copied',
   },
   footer: {
-    tagline: 'Senior Data Scientist · MLOps · Data & AI Product Owner',
+    tagline: 'Senior Data Scientist · Industrialisation · Data & AI Product Owner',
     rights: 'All rights reserved.',
     built: 'Built with Astro.',
     linksTitle: 'Go to',

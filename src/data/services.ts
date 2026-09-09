@@ -15,7 +15,7 @@ export const services = {
     title: 'Cinq façons de travailler ensemble',
     lede:
       'Je n’interviens pas sur tout. Les missions ci-dessous correspondent aux situations où dix ans passés sur la chaîne complète de la donnée font une différence mesurable - et où un seul interlocuteur remplace utilement trois prestataires.',
-    availability: 'Disponible immédiatement - Île-de-France et à distance',
+    availability: 'Disponible pour une nouvelle mission - Île-de-France et à distance',
 
     offersTitle: 'Les missions',
     offers: [
@@ -153,7 +153,7 @@ export const services = {
     title: 'Five ways to work together',
     lede:
       'I do not take on everything. The engagements below match the situations where ten years across the full data chain make a measurable difference - and where one counterpart usefully replaces three vendors.',
-    availability: 'Available now - Paris region and remote',
+    availability: 'Available for a new engagement - Paris region and remote',
 
     offersTitle: 'Engagements',
     offers: [

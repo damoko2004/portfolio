@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseBody from '../../components/CaseBody.astro';
+import DashboardMock from '../../components/DashboardMock.astro';
+import { caseYubora } from '../../data/case-yubora';
+import { routes } from '../../data/content';
+const c = caseYubora.fr;
+---
+
+<Base
+  lang="fr"
+  title={c.meta.title}
+  description={c.meta.description}
+  altFr={routes.fr.caseYubora}
+  altEn={routes.en.caseYubora}
+>
+  <CaseBody lang="fr" data={c}>
+    <DashboardMock slot="mock" mock={c.mock} />
+  </CaseBody>
+</Base>

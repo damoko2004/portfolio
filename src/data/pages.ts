@@ -22,12 +22,12 @@ export const pages = {
   fr: {
     cases: {
       meta: {
-        title: 'Études de cas - missions data en production | Dikers Amoko',
+        title: 'Études de cas - trois missions data en production | Dikers Amoko',
         description:
-          'Deux missions racontées en détail : supervision des interconnexions électriques chez RTE, pilotage de l’acquisition digitale chez LCL. Méthode, architecture et arbitrages, sans données confidentielles.',
+          'Trois missions racontées en détail : supervision des interconnexions chez RTE, pilotage de l’acquisition digitale chez LCL, Customer Intelligence chez un éditeur SaaS. Méthode, architecture et arbitrages, sans données confidentielles.',
       },
       eyebrow: 'Études de cas',
-      title: 'Deux missions racontées comme elles se sont passées',
+      title: 'Trois missions racontées comme elles se sont passées',
       lede:
         'Pas des listes de technologies, mais le raisonnement : quel était le problème, quelles décisions ont été prises, pourquoi celles-là, et ce qui restait une fois la mission terminée. Aucune donnée client n’y figure - c’est expliqué sur chaque page.',
       items: [
@@ -50,6 +50,16 @@ export const pages = {
             'Trois outils, trois chiffres pour la même question. Cube de données multi-sources, référentiel de KPI documenté avec un propriétaire par indicateur, reporting industrialisé et mesure d’impact assumée comme un travail statistique.',
           tags: ['SQL', 'Teradata', 'SAS', 'Dataiku', 'Power BI'],
           href: '/etudes-de-cas/lcl/',
+        },
+        {
+          sector: 'Éditeur SaaS - TPE / PME',
+          org: 'Yubora',
+          period: 'Depuis 2026',
+          title: 'Piloter un SaaS par la donnée quand l’historique n’existe pas encore',
+          desc:
+            'Prévision du revenu récurrent, anticipation du churn, valeur client et tarification dynamique - avec quelques mois de recul seulement. Vision client unifiée, cohortes, modèles interprétables et intervalles affichés plutôt que chiffres nets.',
+          tags: ['Python', 'Pandas', 'R', 'PostgreSQL', 'Power BI'],
+          href: '/etudes-de-cas/yubora/',
         },
       ],
       cta: 'Discuter de votre situation',
@@ -123,10 +133,10 @@ export const pages = {
       meta: {
         title: 'Case studies - data work in production | Dikers Amoko',
         description:
-          'Two assignments told in detail: monitoring electricity interconnections at RTE, steering digital acquisition at LCL. Method, architecture and trade-offs, without confidential data.',
+          'Three assignments told in detail: monitoring electricity interconnections at RTE, steering digital acquisition at LCL, Customer Intelligence at a SaaS vendor. Method, architecture and trade-offs, without confidential data.',
       },
       eyebrow: 'Case studies',
-      title: 'Two assignments told the way they happened',
+      title: 'Three assignments told the way they happened',
       lede:
         'Not lists of technologies, but the reasoning: what the problem was, which decisions were taken, why those ones, and what remained once the assignment ended. No client data appears - each page explains why.',
       items: [
@@ -149,6 +159,16 @@ export const pages = {
             'Three tools, three answers to the same question. A multi-source data cube, a documented KPI reference with an owner per indicator, industrialised reporting and impact measurement treated as statistical work.',
           tags: ['SQL', 'Teradata', 'SAS', 'Dataiku', 'Power BI'],
           href: '/en/case-studies/lcl/',
+        },
+        {
+          sector: 'SaaS vendor - small businesses',
+          org: 'Yubora',
+          period: 'Since 2026',
+          title: 'Running a SaaS on data before the history exists',
+          desc:
+            'Recurring revenue forecasting, churn anticipation, customer value and dynamic pricing - on a few months of hindsight. Unified customer view, cohorts, interpretable models and intervals shown rather than clean numbers.',
+          tags: ['Python', 'Pandas', 'R', 'PostgreSQL', 'Power BI'],
+          href: '/en/case-studies/yubora/',
         },
       ],
       cta: 'Discuss your situation',
