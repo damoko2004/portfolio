@@ -58,7 +58,7 @@ const portrait = Object.values(found)[0]?.default;
         portrait ? (
           <Image
             src={portrait}
-            alt={`${t.hero.name} — ${t.hero.title}`}
+            alt={`${t.hero.name} - ${t.hero.title}`}
             widths={[280, 560]}
             sizes="(max-width: 62rem) 60vw, 300px"
             loading="eager"
@@ -185,9 +185,9 @@ const portrait = Object.values(found)[0]?.default;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
-      'badge portrait'
-      'ident portrait'
-      'statement portrait'
+      'badge badge'
+      'ident ident'
+      'statement statement'
       'below portrait'
       'facts facts';
     align-items: start;
@@ -214,7 +214,7 @@ const portrait = Object.values(found)[0]?.default;
   .portrait {
     grid-area: portrait;
     align-self: end;
-    width: clamp(13rem, 22vw, 18rem);
+    width: clamp(11rem, 20vw, 15rem);
     margin: 0;
     position: relative;
   }

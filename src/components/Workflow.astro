@@ -1,0 +1,279 @@
+---
+import { content, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+const w = t.workflow;
+---
+
+<section class="flow" aria-labelledby="flow-title">
+  <div class="wrap">
+    <div class="flow__head">
+      <h2 id="flow-title">{w.title}</h2>
+      <p>{w.note}</p>
+    </div>
+
+    <div class="pipe">
+      <p class="pipe__end pipe__end--in">{w.entry}</p>
+
+      <ol class="pipe__stages">
+        {
+          w.stages.map((stage) => (
+            <li class="stage">
+              <span class="stage__node" aria-hidden="true" />
+              <h3>{stage.name}</h3>
+              <p class="stage__desc">{stage.desc}</p>
+              <ul class="stage__tools">
+                {stage.tools.map((tool) => (
+                  <li>{tool}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p class="pipe__end pipe__end--out">{w.exit}</p>
+    </div>
+
+    <div class="across">
+      <p class="across__label">{w.acrossTitle}</p>
+      <ul>
+        {w.across.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .flow {
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--rule);
+    padding-block: var(--sp-5);
+  }
+
+  .flow__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-2) var(--sp-4);
+    padding-bottom: var(--sp-4);
+  }
+
+  .flow__head h2 {
+    font-size: var(--t-xl);
+  }
+
+  .flow__head p {
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+    max-width: 46ch;
+  }
+
+  /* La ligne de production : entrée, cinq étapes, sortie. */
+  .pipe {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    gap: var(--sp-3);
+  }
+
+  .pipe__end {
+    font-family: var(--serif);
+    font-size: var(--t-sm);
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 6.5rem;
+    padding-top: 1.35rem;
+    position: relative;
+  }
+
+  .pipe__end::after {
+    content: '';
+    position: absolute;
+    top: 0.3rem;
+    width: 100%;
+    height: 1px;
+    background: var(--rule-strong);
+    left: 0;
+  }
+
+  .pipe__end--in {
+    text-align: right;
+  }
+
+  .pipe__end--out {
+    color: var(--gold);
+  }
+
+  .pipe__end--out::after {
+    background: var(--gold);
+  }
+
+  .pipe__stages {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    position: relative;
+  }
+
+  /* Le fil continu qui traverse les cinq étapes. */
+  .pipe__stages::before {
+    content: '';
+    position: absolute;
+    top: 0.3rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--rule-strong);
+  }
+
+  .stage {
+    position: relative;
+    padding: 1.35rem var(--sp-2) 0 0;
+  }
+
+  .stage + .stage {
+    padding-left: var(--sp-2);
+  }
+
+  .stage__node {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.6rem;
+    height: 0.6rem;
+    border: 1px solid var(--gold);
+    background: var(--paper-2);
+    transform: rotate(45deg);
+  }
+
+  .stage + .stage .stage__node {
+    left: var(--sp-2);
+  }
+
+  .stage:last-child .stage__node {
+    background: var(--gold);
+  }
+
+  .stage h3 {
+    font-size: var(--t-md);
+    font-weight: 500;
+    line-height: 1.15;
+  }
+
+  .stage__desc {
+    margin-top: 0.4rem;
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+
+  .stage__tools {
+    margin-top: var(--sp-2);
+    padding-top: var(--sp-2);
+    border-top: 1px solid var(--rule);
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .stage__tools li {
+    font-size: var(--t-xs);
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .across {
+    margin-top: var(--sp-4);
+    padding-top: var(--sp-3);
+    border-top: 2px solid var(--pine);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--sp-2) var(--sp-4);
+  }
+
+  .across__label {
+    font-size: var(--t-xs);
+    font-weight: 620;
+    letter-spacing: 0.03em;
+    color: var(--gold);
+  }
+
+  .across ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .across li {
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+    padding-inline: 0.8rem;
+    border-left: 1px solid var(--rule-strong);
+  }
+
+  .across li:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  @media (max-width: 75rem) {
+    .pipe {
+      grid-template-columns: 1fr;
+    }
+
+    .pipe__end {
+      max-width: none;
+      padding-top: 0.9rem;
+    }
+
+    .pipe__end--in {
+      text-align: left;
+    }
+
+    .pipe__end::after {
+      max-width: 8rem;
+    }
+
+    .pipe__end--out::after {
+      left: auto;
+      right: 0;
+    }
+
+    .pipe__end--out {
+      text-align: right;
+    }
+  }
+
+  @media (max-width: 62rem) {
+    .pipe__stages {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: var(--sp-4);
+    }
+
+    .pipe__stages::before {
+      display: none;
+    }
+
+    .stage {
+      border-top: 1px solid var(--rule-strong);
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .pipe__stages {
+      grid-template-columns: 1fr;
+    }
+
+    .stage + .stage {
+      padding-left: 0;
+    }
+
+    .stage + .stage .stage__node {
+      left: 0;
+    }
+  }
+</style>

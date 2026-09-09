@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Page « Prestations » — offres d'intervention en freelance.
+// Page « Prestations » - offres d'intervention en freelance.
 // Aucun tarif n'est affiché : le prix dépend du périmètre, et l'afficher
 // attire des demandes mal cadrées. Le CTA est un appel de cadrage.
 // ---------------------------------------------------------------------------
@@ -7,15 +7,15 @@
 export const services = {
   fr: {
     meta: {
-      title: 'Prestations freelance — Data Science, MLOps, Product Ownership | Dikers Amoko',
+      title: 'Prestations freelance - Data Science, MLOps, Product Ownership | Dikers Amoko',
       description:
         'Cinq façons de travailler ensemble : cadrage d’une feuille de route data, mise en production d’un modèle, industrialisation d’un existant, product ownership en temps partagé, audit d’une plateforme IA. Île-de-France et à distance.',
     },
     eyebrow: 'Prestations',
     title: 'Cinq façons de travailler ensemble',
     lede:
-      'Je n’interviens pas sur tout. Les missions ci-dessous correspondent aux situations où dix ans passés sur la chaîne complète de la donnée font une différence mesurable — et où un seul interlocuteur remplace utilement trois prestataires.',
-    availability: 'Disponible immédiatement — Île-de-France et à distance',
+      'Je n’interviens pas sur tout. Les missions ci-dessous correspondent aux situations où dix ans passés sur la chaîne complète de la donnée font une différence mesurable - et où un seul interlocuteur remplace utilement trois prestataires.',
+    availability: 'Disponible immédiatement - Île-de-France et à distance',
 
     offersTitle: 'Les missions',
     offers: [
@@ -23,7 +23,7 @@ export const services = {
         title: 'Cadrage et feuille de route data / IA',
         duration: '2 à 4 semaines',
         pitch:
-          'Vous savez que la donnée doit vous servir à quelque chose, sans savoir par quoi commencer — ou vos équipes ont dix idées et aucun arbitrage.',
+          'Vous savez que la donnée doit vous servir à quelque chose, sans savoir par quoi commencer - ou vos équipes ont dix idées et aucun arbitrage.',
         deliverables: [
           'Ateliers avec les directions concernées, état des lieux des sources et de leur qualité réelle',
           'Cas d’usage qualifiés, chiffrés en valeur attendue et en effort',
@@ -35,7 +35,7 @@ export const services = {
         title: 'Conception et mise en production d’un modèle',
         duration: '2 à 4 mois',
         pitch:
-          'Un besoin identifié — churn, valeur client, prévision, détection d’anomalies, scoring — à emmener de la question métier jusqu’à un modèle qui tourne et qui sert.',
+          'Un besoin identifié - churn, valeur client, prévision, détection d’anomalies, scoring - à emmener de la question métier jusqu’à un modèle qui tourne et qui sert.',
         deliverables: [
           'Table analytique construite sans fuite temporelle, documentée',
           'Modélisation, choix du seuil de décision aligné sur le coût métier réel',
@@ -59,7 +59,7 @@ export const services = {
         title: 'Product Ownership Data & IA en temps partagé',
         duration: 'Mission longue, 2 à 3 jours par semaine',
         pitch:
-          'Il vous manque la personne qui parle métier avec les directions, spécifications avec la DSI, et architecture avec les prestataires — sans avoir besoin d’un recrutement à plein temps.',
+          'Il vous manque la personne qui parle métier avec les directions, spécifications avec la DSI, et architecture avec les prestataires - sans avoir besoin d’un recrutement à plein temps.',
         deliverables: [
           'Recueil du besoin, règles de gestion, spécifications, backlog priorisé',
           'Recette fonctionnelle, comités de pilotage, suivi des livraisons',
@@ -96,7 +96,7 @@ export const services = {
       {
         title: 'Aucune dépendance à ma personne',
         body:
-          'Tout ce que je produis est documenté, versionné et reproductible. À la fin d’une mission, vos équipes reprennent le dispositif — c’est ce qui s’est passé chez RTE comme à l’INSEE.',
+          'Tout ce que je produis est documenté, versionné et reproductible. À la fin d’une mission, vos équipes reprennent le dispositif - c’est ce qui s’est passé chez RTE comme à l’INSEE.',
       },
       {
         title: 'Je dis quand un cas d’usage n’est pas mûr',
@@ -106,7 +106,7 @@ export const services = {
       {
         title: 'Confidentialité par défaut',
         body:
-          'NDA signé sans discussion. Rien de ce qui est produit chez un client n’est publié ni réutilisé sans accord écrit — mon étude de cas publique ne contient aucune valeur, aucun seuil et aucune capture de livrable réel.',
+          'NDA signé sans discussion. Rien de ce qui est produit chez un client n’est publié ni réutilisé sans accord écrit - mon étude de cas publique ne contient aucune valeur, aucun seuil et aucune capture de livrable réel.',
       },
     ],
 
@@ -145,15 +145,15 @@ export const services = {
 
   en: {
     meta: {
-      title: 'Freelance services — Data Science, MLOps, Product Ownership | Dikers Amoko',
+      title: 'Freelance services - Data Science, MLOps, Product Ownership | Dikers Amoko',
       description:
         'Five ways to work together: framing a data roadmap, taking a model to production, industrialising existing work, fractional data product ownership, auditing an AI platform. Paris region and remote.',
     },
     eyebrow: 'Services',
     title: 'Five ways to work together',
     lede:
-      'I do not take on everything. The engagements below match the situations where ten years across the full data chain make a measurable difference — and where one counterpart usefully replaces three vendors.',
-    availability: 'Available now — Paris region and remote',
+      'I do not take on everything. The engagements below match the situations where ten years across the full data chain make a measurable difference - and where one counterpart usefully replaces three vendors.',
+    availability: 'Available now - Paris region and remote',
 
     offersTitle: 'Engagements',
     offers: [
@@ -161,7 +161,7 @@ export const services = {
         title: 'Data / AI framing and roadmap',
         duration: '2 to 4 weeks',
         pitch:
-          'You know data should be working for you but not where to start — or your teams have ten ideas and no arbitration.',
+          'You know data should be working for you but not where to start - or your teams have ten ideas and no arbitration.',
         deliverables: [
           'Workshops with the departments involved, review of sources and their actual quality',
           'Qualified use cases, sized by expected value and by effort',
@@ -173,7 +173,7 @@ export const services = {
         title: 'Designing and shipping a model',
         duration: '2 to 4 months',
         pitch:
-          'An identified need — churn, customer value, forecasting, anomaly detection, scoring — taken from the business question to a model that runs and gets used.',
+          'An identified need - churn, customer value, forecasting, anomaly detection, scoring - taken from the business question to a model that runs and gets used.',
         deliverables: [
           'A documented analytical table built without temporal leakage',
           'Modelling, decision threshold aligned with the real business cost',
@@ -197,7 +197,7 @@ export const services = {
         title: 'Fractional Data & AI Product Ownership',
         duration: 'Long engagement, 2 to 3 days a week',
         pitch:
-          'You are missing the person who speaks business with departments, specifications with IT and architecture with vendors — without needing a full-time hire.',
+          'You are missing the person who speaks business with departments, specifications with IT and architecture with vendors - without needing a full-time hire.',
         deliverables: [
           'Requirements, business rules, specifications, prioritised backlog',
           'Functional acceptance testing, steering committees, delivery tracking',
@@ -234,7 +234,7 @@ export const services = {
       {
         title: 'No dependency on me',
         body:
-          'Everything I produce is documented, versioned and reproducible. At the end of an engagement your teams take the system over — that is what happened at RTE and at INSEE.',
+          'Everything I produce is documented, versioned and reproducible. At the end of an engagement your teams take the system over - that is what happened at RTE and at INSEE.',
       },
       {
         title: 'I say when a use case is not ready',
@@ -244,7 +244,7 @@ export const services = {
       {
         title: 'Confidentiality by default',
         body:
-          'NDA signed without discussion. Nothing produced for a client is published or reused without written agreement — my public case study contains no values, no thresholds and no screenshot of a real deliverable.',
+          'NDA signed without discussion. Nothing produced for a client is published or reused without written agreement - my public case study contains no values, no thresholds and no screenshot of a real deliverable.',
       },
     ],
 

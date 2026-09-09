@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Étude de cas — supervision des interconnexions électriques (RTE via Scalian).
+// Étude de cas - supervision des interconnexions électriques (RTE via Scalian).
 //
 // RÈGLE DE RÉDACTION appliquée à tout ce fichier :
 // on décrit le problème, la méthode, l'architecture et les choix d'ingénierie.
@@ -12,7 +12,7 @@ export const caseRte = {
   fr: {
     meta: {
       title:
-        'Superviser les interconnexions électriques françaises — étude de cas | Dikers Amoko',
+        'Superviser les interconnexions électriques françaises - étude de cas | Dikers Amoko',
       description:
         'Comment une revue matinale manuelle est devenue un dispositif automatisé de surveillance et d’alerte, développé en R et déployé en production chez RTE. Méthode, architecture et choix d’ingénierie.',
     },
@@ -22,9 +22,9 @@ export const caseRte = {
       'RTE exploite le réseau public de transport d’électricité : une infrastructure critique nationale, connectée à ses voisins européens. Les experts marché devaient reconstituer chaque matin, à la main, ce qui s’était passé la veille aux frontières. J’ai transformé cette revue en un dispositif automatisé de surveillance, de détection d’anomalies et d’alerte, développé en R et déployé en production.',
 
     facts: [
-      { label: 'Client final', value: 'RTE — Réseau de Transport d’Électricité' },
+      { label: 'Client final', value: 'RTE - Réseau de Transport d’Électricité' },
       { label: 'Cadre', value: 'Mission via Scalian' },
-      { label: 'Période', value: 'Février 2023 — janvier 2024' },
+      { label: 'Période', value: 'Février 2023 - janvier 2024' },
       { label: 'Rôle', value: 'Data Scientist, du recueil du besoin au run' },
     ],
 
@@ -32,7 +32,7 @@ export const caseRte = {
       title: 'Ce que cette page ne montre pas, et pourquoi',
       body: [
         'Les données de RTE sur les capacités d’échange, les flux réalisés et les prix, ainsi que les seuils d’alerte calibrés en interne, sont confidentiels. Ils ne figurent pas ici et ne figureront nulle part ailleurs sous ma signature.',
-        'Ce qui suit décrit donc la démarche, l’architecture et les décisions d’ingénierie — c’est-à-dire ce qui est transférable à un autre contexte. Les visuels de cette page sont des reconstitutions construites à partir de données synthétiques, produites pour cette page et sans aucun rapport avec les valeurs réelles.',
+        'Ce qui suit décrit donc la démarche, l’architecture et les décisions d’ingénierie - c’est-à-dire ce qui est transférable à un autre contexte. Les visuels de cette page sont des reconstitutions construites à partir de données synthétiques, produites pour cette page et sans aucun rapport avec les valeurs réelles.',
         'Cette discipline n’est pas une contrainte subie : la même culture de traçabilité et de secret statistique m’a été transmise à l’INSEE, et c’est en général ce que cherche un client qui manipule des données sensibles.',
       ],
     },
@@ -42,7 +42,7 @@ export const caseRte = {
         title: 'Le problème n’était pas l’absence de données',
         body: [
           'L’information existait déjà. Elle était simplement dispersée dans plusieurs systèmes, produite à des rythmes différents, et disponible avec des délais qui n’étaient pas les mêmes d’une frontière à l’autre.',
-          'Résultat : chaque matin, plusieurs experts refaisaient séparément la même collecte avant de pouvoir commencer à réfléchir. Le temps passé à rassembler mangeait le temps disponible pour analyser, et une journée chargée suffisait à faire sauter la revue — donc à laisser passer un événement.',
+          'Résultat : chaque matin, plusieurs experts refaisaient séparément la même collecte avant de pouvoir commencer à réfléchir. Le temps passé à rassembler mangeait le temps disponible pour analyser, et une journée chargée suffisait à faire sauter la revue - donc à laisser passer un événement.',
           'Le besoin réel n’était pas « un tableau de bord de plus ». C’était : que l’information vienne à l’expert, complète, à heure fixe, et qu’elle signale d’elle-même ce qui mérite attention.',
         ],
       },
@@ -107,7 +107,7 @@ export const caseRte = {
           {
             title: 'Seuils fixes, adossés à des règles connues',
             body:
-              'Certains événements sont définis par le fonctionnement même des marchés européens : franchissement de bornes réglementaires, passage en mode dégradé, signal officiel de tension du système. Ces règles ne se calibrent pas statistiquement, elles se transcrivent fidèlement — et se mettent à jour quand la règle change.',
+              'Certains événements sont définis par le fonctionnement même des marchés européens : franchissement de bornes réglementaires, passage en mode dégradé, signal officiel de tension du système. Ces règles ne se calibrent pas statistiquement, elles se transcrivent fidèlement - et se mettent à jour quand la règle change.',
           },
           {
             title: 'Seuils statistiques glissants',
@@ -123,7 +123,7 @@ export const caseRte = {
           {
             title: 'L’e-mail plutôt que le tableau de bord',
             body:
-              'Un tableau de bord suppose que quelqu’un pense à l’ouvrir. C’est exactement ce qui n’arrive pas les jours chargés — c’est-à-dire les jours où il compte. L’e-mail arrive tout seul, y compris quand personne ne le demande. L’application Shiny reste disponible pour approfondir, mais elle n’est pas le point d’entrée.',
+              'Un tableau de bord suppose que quelqu’un pense à l’ouvrir. C’est exactement ce qui n’arrive pas les jours chargés - c’est-à-dire les jours où il compte. L’e-mail arrive tout seul, y compris quand personne ne le demande. L’application Shiny reste disponible pour approfondir, mais elle n’est pas le point d’entrée.',
           },
           {
             title: 'Des graphiques embarqués dans le message',
@@ -143,7 +143,7 @@ export const caseRte = {
           {
             title: 'Les critères d’alerte publiés en bas de chaque envoi',
             body:
-              'Chaque message rappelle les règles qui ont pu le déclencher. Un expert peut ainsi contester une alerte, demander un recalibrage, ou comprendre une absence d’alerte. C’est ce qui transforme un outil opaque en outil discutable — et donc adopté.',
+              'Chaque message rappelle les règles qui ont pu le déclencher. Un expert peut ainsi contester une alerte, demander un recalibrage, ou comprendre une absence d’alerte. C’est ce qui transforme un outil opaque en outil discutable - et donc adopté.',
           },
         ],
       },
@@ -151,7 +151,7 @@ export const caseRte = {
         title: 'La sortie de mission',
         body: [
           'Une mission de data science réussie se juge à ce qu’il reste quand le consultant part.',
-          'La solution a été documentée — architecture, règles, procédures d’exploitation, conduite à tenir en cas d’incident — et les équipes d’exploitation ont été accompagnées jusqu’à la reprise complète. Aucune partie du dispositif ne dépendait de ma présence.',
+          'La solution a été documentée - architecture, règles, procédures d’exploitation, conduite à tenir en cas d’incident - et les équipes d’exploitation ont été accompagnées jusqu’à la reprise complète. Aucune partie du dispositif ne dépendait de ma présence.',
         ],
       },
     ],
@@ -161,7 +161,7 @@ export const caseRte = {
       note:
         'Reconstitution avec des données synthétiques générées pour cette page. Ni les valeurs, ni les seuils, ni les libellés internes réels n’y figurent.',
       badge: 'Données synthétiques',
-      subject: 'Alertes journalières — surveillance des interconnexions',
+      subject: 'Alertes journalières - surveillance des interconnexions',
       date: 'Exemple de rendu',
       blocks: [
         {
@@ -170,12 +170,12 @@ export const caseRte = {
           kind: 'status',
         },
         {
-          title: 'Capacités d’échange journalières — frontière A',
+          title: 'Capacités d’échange journalières - frontière A',
           note: 'Série de la journée comparée à l’enveloppe habituelle.',
           kind: 'band',
         },
         {
-          title: 'Flux réalisés sur les câbles d’interconnexion — frontière B',
+          title: 'Flux réalisés sur les câbles d’interconnexion - frontière B',
           note: 'Donnée disponible avec un décalage : date effective indiquée.',
           kind: 'bars',
         },
@@ -208,7 +208,7 @@ export const caseRte = {
 
   en: {
     meta: {
-      title: 'Monitoring French electricity interconnections — case study | Dikers Amoko',
+      title: 'Monitoring French electricity interconnections - case study | Dikers Amoko',
       description:
         'How a manual morning review became an automated monitoring and alerting system, built in R and deployed in production at RTE. Method, architecture and engineering decisions.',
     },
@@ -218,9 +218,9 @@ export const caseRte = {
       'RTE operates the French electricity transmission network: critical national infrastructure, connected to its European neighbours. Every morning, market experts had to reconstruct by hand what had happened at the borders the day before. I turned that review into an automated monitoring, anomaly detection and alerting system, built in R and deployed in production.',
 
     facts: [
-      { label: 'End client', value: 'RTE — French transmission system operator' },
+      { label: 'End client', value: 'RTE - French transmission system operator' },
       { label: 'Setting', value: 'Assignment through Scalian' },
-      { label: 'Period', value: 'February 2023 — January 2024' },
+      { label: 'Period', value: 'February 2023 - January 2024' },
       { label: 'Role', value: 'Data Scientist, from requirements to production run' },
     ],
 
@@ -228,7 +228,7 @@ export const caseRte = {
       title: 'What this page does not show, and why',
       body: [
         'RTE’s data on exchange capacities, realised flows and prices, along with the internally calibrated alert thresholds, are confidential. They do not appear here and will not appear anywhere else under my name.',
-        'What follows therefore describes the approach, the architecture and the engineering decisions — that is, what transfers to another context. The visuals on this page are reconstructions built from synthetic data, produced for this page and unrelated to any real value.',
+        'What follows therefore describes the approach, the architecture and the engineering decisions - that is, what transfers to another context. The visuals on this page are reconstructions built from synthetic data, produced for this page and unrelated to any real value.',
         'This discipline is not a constraint I put up with: the same culture of traceability and statistical secrecy was handed to me at INSEE, and it is usually what a client handling sensitive data is looking for.',
       ],
     },
@@ -238,7 +238,7 @@ export const caseRte = {
         title: 'The problem was not missing data',
         body: [
           'The information already existed. It was simply spread across several systems, produced at different rhythms, and available with delays that differed from one border to the next.',
-          'The result: every morning, several experts separately redid the same collection work before they could start thinking. Time spent gathering ate into time available for analysis, and one busy day was enough to skip the review — and therefore to miss an event.',
+          'The result: every morning, several experts separately redid the same collection work before they could start thinking. Time spent gathering ate into time available for analysis, and one busy day was enough to skip the review - and therefore to miss an event.',
           'The real need was not "one more dashboard". It was: information should come to the expert, complete, at a fixed time, and should flag by itself what deserves attention.',
         ],
       },
@@ -299,7 +299,7 @@ export const caseRte = {
           {
             title: 'Fixed thresholds, anchored in known rules',
             body:
-              'Some events are defined by how European markets work: crossing a regulatory bound, switching into degraded mode, an official system tension signal. These rules are not calibrated statistically, they are transcribed faithfully — and updated when the rule changes.',
+              'Some events are defined by how European markets work: crossing a regulatory bound, switching into degraded mode, an official system tension signal. These rules are not calibrated statistically, they are transcribed faithfully - and updated when the rule changes.',
           },
           {
             title: 'Rolling statistical thresholds',
@@ -315,7 +315,7 @@ export const caseRte = {
           {
             title: 'Email rather than dashboard',
             body:
-              'A dashboard assumes someone remembers to open it. That is exactly what does not happen on busy days — which are the days it matters. The email arrives on its own, including when nobody asks for it. The Shiny app remains available to dig deeper, but it is not the entry point.',
+              'A dashboard assumes someone remembers to open it. That is exactly what does not happen on busy days - which are the days it matters. The email arrives on its own, including when nobody asks for it. The Shiny app remains available to dig deeper, but it is not the entry point.',
           },
           {
             title: 'Charts embedded in the message',
@@ -335,7 +335,7 @@ export const caseRte = {
           {
             title: 'Alert criteria published at the bottom of every send',
             body:
-              'Each message restates the rules that could have triggered it. An expert can then challenge an alert, ask for recalibration, or understand why no alert fired. That is what turns an opaque tool into a debatable one — and therefore an adopted one.',
+              'Each message restates the rules that could have triggered it. An expert can then challenge an alert, ask for recalibration, or understand why no alert fired. That is what turns an opaque tool into a debatable one - and therefore an adopted one.',
           },
         ],
       },
@@ -343,7 +343,7 @@ export const caseRte = {
         title: 'Leaving the assignment',
         body: [
           'A successful data science assignment is judged by what remains once the consultant leaves.',
-          'The solution was documented — architecture, rules, operating procedures, what to do in case of incident — and the operations teams were supported through full handover. No part of the system depended on my presence.',
+          'The solution was documented - architecture, rules, operating procedures, what to do in case of incident - and the operations teams were supported through full handover. No part of the system depended on my presence.',
         ],
       },
     ],
@@ -353,7 +353,7 @@ export const caseRte = {
       note:
         'Reconstruction using synthetic data generated for this page. No real values, thresholds or internal labels appear in it.',
       badge: 'Synthetic data',
-      subject: 'Daily alerts — interconnection monitoring',
+      subject: 'Daily alerts - interconnection monitoring',
       date: 'Example rendering',
       blocks: [
         {
@@ -362,12 +362,12 @@ export const caseRte = {
           kind: 'status',
         },
         {
-          title: 'Daily exchange capacities — border A',
+          title: 'Daily exchange capacities - border A',
           note: 'Today’s series against the usual envelope.',
           kind: 'band',
         },
         {
-          title: 'Realised flows on interconnection cables — border B',
+          title: 'Realised flows on interconnection cables - border B',
           note: 'Data available with a lag: effective date shown.',
           kind: 'bars',
         },
