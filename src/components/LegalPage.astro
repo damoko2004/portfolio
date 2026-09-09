@@ -1,0 +1,116 @@
+---
+import PageHead from './PageHead.astro';
+import { pages, legalIdentity } from '../data/pages';
+import { type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const l = pages[lang].legal;
+
+const rows = [
+  { label: l.labels.name, value: legalIdentity.name },
+  { label: l.labels.status, value: legalIdentity.status },
+  { label: l.labels.siret, value: legalIdentity.siret },
+  { label: l.labels.vat, value: legalIdentity.vat },
+  { label: l.labels.address, value: legalIdentity.address },
+  { label: l.labels.email, value: legalIdentity.email },
+  { label: l.labels.phone, value: legalIdentity.phone },
+  { label: l.labels.director, value: legalIdentity.director },
+  { label: l.labels.host, value: legalIdentity.host },
+];
+---
+
+<PageHead eyebrow={l.eyebrow} title={l.title} lede={l.lede} />
+
+<section class="section">
+  <div class="wrap legal">
+    <h2>{l.editorTitle}</h2>
+    <dl class="identity">
+      {
+        rows.map((row) => (
+          <div>
+            <dt>{row.label}</dt>
+            <dd>{row.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    {
+      l.sections.map((section) => (
+        <section class="block">
+          <h2>{section.title}</h2>
+          {section.body.map((p) => (
+            <p>{p}</p>
+          ))}
+        </section>
+      ))
+    }
+
+    <p class="disclaimer">{l.disclaimer}</p>
+  </div>
+</section>
+
+<style>
+  .legal {
+    max-width: 52rem;
+  }
+
+  .legal h2 {
+    font-size: var(--t-lg);
+    padding-bottom: var(--sp-2);
+    border-bottom: 2px solid var(--pine);
+  }
+
+  .identity {
+    margin-block: var(--sp-3) var(--sp-5);
+  }
+
+  .identity > div {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: var(--sp-2);
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .identity dt {
+    font-size: var(--t-sm);
+    font-weight: 620;
+  }
+
+  .identity dd {
+    margin: 0;
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  .block {
+    margin-top: var(--sp-5);
+  }
+
+  .block p {
+    margin-top: var(--sp-3);
+    font-size: var(--t-sm);
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+
+  .disclaimer {
+    margin-top: var(--sp-5);
+    padding-top: var(--sp-3);
+    border-top: 1px solid var(--rule);
+    font-size: var(--t-xs);
+    color: var(--ink-3);
+  }
+
+  @media (max-width: 48rem) {
+    .identity > div {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

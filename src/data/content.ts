@@ -37,8 +37,24 @@ export const links = {
 
 /** Chemins des pages, par langue. */
 export const routes = {
-  fr: { home: '/', services: '/prestations/', caseRte: '/etudes-de-cas/rte/' },
-  en: { home: '/en/', services: '/en/services/', caseRte: '/en/case-studies/rte/' },
+  fr: {
+    home: '/',
+    services: '/prestations/',
+    cases: '/etudes-de-cas/',
+    caseRte: '/etudes-de-cas/rte/',
+    caseLcl: '/etudes-de-cas/lcl/',
+    background: '/parcours/',
+    legal: '/mentions-legales/',
+  },
+  en: {
+    home: '/en/',
+    services: '/en/services/',
+    cases: '/en/case-studies/',
+    caseRte: '/en/case-studies/rte/',
+    caseLcl: '/en/case-studies/lcl/',
+    background: '/en/background/',
+    legal: '/en/legal-notice/',
+  },
 } as const;
 
 export const SITE_URL = 'https://dikers-amoko.netlify.app';
@@ -97,7 +113,7 @@ const fr = {
     items: [
       { href: '#profil', label: 'Profil' },
       { href: '#missions', label: 'Missions' },
-      { href: '/etudes-de-cas/rte/', label: 'Étude de cas' },
+      { href: '/etudes-de-cas/', label: 'Études de cas' },
       { href: '/prestations/', label: 'Prestations' },
       { href: '#publications', label: 'Publications' },
       { href: '#contact', label: 'Contact' },
@@ -284,6 +300,7 @@ const fr = {
         stack: ['SAS', 'R', 'Python', 'SQL', 'DBeaver'],
       },
     ] as Job[],
+    backgroundLink: 'Voir le parcours complet et les compétences',
     earlierTitle: 'Avant cela',
     earlier: [
       {
@@ -458,7 +475,9 @@ const fr = {
     pages: [
       { href: '/', label: 'Accueil' },
       { href: '/prestations/', label: 'Prestations' },
-      { href: '/etudes-de-cas/rte/', label: 'Étude de cas - RTE' },
+      { href: '/etudes-de-cas/', label: 'Études de cas' },
+      { href: '/parcours/', label: 'Parcours & compétences' },
+      { href: '/mentions-legales/', label: 'Mentions légales' },
     ],
   },
 };
@@ -476,12 +495,12 @@ const en: typeof fr = {
     items: [
       { href: '#profil', label: 'Profile' },
       { href: '#missions', label: 'Work' },
-      { href: '/en/case-studies/rte/', label: 'Case study' },
+      { href: '/en/case-studies/', label: 'Case studies' },
       { href: '/en/services/', label: 'Services' },
       { href: '#publications', label: 'Publications' },
       { href: '#contact', label: 'Contact' },
     ],
-    cv: 'Résumé (PDF)',
+    cv: 'CV (PDF, in French)',
     menu: 'Menu',
     close: 'Close',
     skip: 'Skip to content',
@@ -662,6 +681,7 @@ const en: typeof fr = {
         stack: ['SAS', 'R', 'Python', 'SQL', 'DBeaver'],
       },
     ] as Job[],
+    backgroundLink: 'See the full background and skills',
     earlierTitle: 'Earlier',
     earlier: [
       {
@@ -835,7 +855,9 @@ const en: typeof fr = {
     pages: [
       { href: '/en/', label: 'Home' },
       { href: '/en/services/', label: 'Services' },
-      { href: '/en/case-studies/rte/', label: 'Case study - RTE' },
+      { href: '/en/case-studies/', label: 'Case studies' },
+      { href: '/en/background/', label: 'Background & skills' },
+      { href: '/en/legal-notice/', label: 'Legal notice' },
     ],
   },
 };

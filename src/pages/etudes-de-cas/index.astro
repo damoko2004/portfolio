@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import CasesIndex from '../../components/CasesIndex.astro';
+import { pages } from '../../data/pages';
+import { routes } from '../../data/content';
+const c = pages.fr.cases;
+---
+
+<Base
+  lang="fr"
+  title={c.meta.title}
+  description={c.meta.description}
+  altFr={routes.fr.cases}
+  altEn={routes.en.cases}
+>
+  <CasesIndex lang="fr" />
+</Base>

@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import BackgroundPage from '../components/BackgroundPage.astro';
+import { pages } from '../data/pages';
+import { routes } from '../data/content';
+const b = pages.fr.background;
+---
+
+<Base
+  lang="fr"
+  title={b.meta.title}
+  description={b.meta.description}
+  altFr={routes.fr.background}
+  altEn={routes.en.background}
+>
+  <BackgroundPage lang="fr" />
+</Base>

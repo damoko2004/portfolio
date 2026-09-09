@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import LegalPage from '../components/LegalPage.astro';
+import { pages } from '../data/pages';
+import { routes } from '../data/content';
+const l = pages.fr.legal;
+---
+
+<Base
+  lang="fr"
+  title={l.meta.title}
+  description={l.meta.description}
+  altFr={routes.fr.legal}
+  altEn={routes.en.legal}
+>
+  <LegalPage lang="fr" />
+</Base>

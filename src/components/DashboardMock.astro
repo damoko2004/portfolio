@@ -1,0 +1,265 @@
+---
+// Reconstitution du livrable LCL avec des données SYNTHÉTIQUES.
+// Générées par un générateur pseudo-aléatoire à graine fixe, uniquement pour
+// illustrer la forme du rendu. Aucun rapport avec des valeurs réelles, et
+// elles ne doivent jamais être remplacées par des valeurs réelles.
+
+interface Props {
+  mock: {
+    title: string;
+    note: string;
+    badge: string;
+    subject: string;
+    date: string;
+    funnelTitle: string;
+    funnelNote: string;
+    funnel: string[];
+    channelsTitle: string;
+    channelsNote: string;
+    channels: string[];
+    footTitle: string;
+    foot: string[];
+  };
+}
+
+const { mock } = Astro.props;
+
+// Entonnoir décroissant, largeurs relatives arbitraires.
+const widths = [100, 46, 27, 13, 7];
+
+// Contributions synthétiques par levier, à graine fixe.
+function makeRandom(seed: number) {
+  let s = seed;
+  return () => {
+    s = (s * 1103515245 + 12345) % 2147483648;
+    return s / 2147483648;
+  };
+}
+const rand = makeRandom(20240601);
+const raw = mock.channels.map(() => 0.25 + rand() * 0.75);
+const max = Math.max(...raw);
+const bars = raw.map((v) => Math.round((v / max) * 100));
+---
+
+<section class="mock" aria-labelledby="mock-title">
+  <div class="mock__head">
+    <h2 id="mock-title">{mock.title}</h2>
+    <p class="mock__note">{mock.note}</p>
+  </div>
+
+  <div class="frame">
+    <p class="frame__badge">{mock.badge}</p>
+
+    <div class="board">
+      <header class="board__head">
+        <p class="board__subject">{mock.subject}</p>
+        <p class="board__date">{mock.date}</p>
+      </header>
+
+      <article class="board__block">
+        <h3>{mock.funnelTitle}</h3>
+        <ul class="funnel">
+          {
+            mock.funnel.map((step, i) => (
+              <li>
+                <span class="funnel__label">{step}</span>
+                <span class="funnel__track">
+                  <span class="funnel__bar" style={`width: ${widths[i]}%`} />
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="board__caption">{mock.funnelNote}</p>
+      </article>
+
+      <article class="board__block">
+        <h3>{mock.channelsTitle}</h3>
+        <ul class="channels">
+          {
+            mock.channels.map((channel, i) => (
+              <li>
+                <span class="channels__label">{channel}</span>
+                <span class="channels__track">
+                  <span class="channels__bar" style={`width: ${bars[i]}%`} />
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="board__caption">{mock.channelsNote}</p>
+      </article>
+
+      <footer class="board__foot">
+        <p class="board__foot-title">{mock.footTitle}</p>
+        <ul>
+          {mock.foot.map((f) => <li>{f}</li>)}
+        </ul>
+      </footer>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mock {
+    margin-top: var(--sp-5);
+  }
+
+  .mock__head h2 {
+    font-size: var(--t-xl);
+  }
+
+  .mock__note {
+    margin-top: var(--sp-2);
+    max-width: var(--measure);
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+  }
+
+  .frame {
+    position: relative;
+    margin-top: var(--sp-3);
+    background: var(--paper-2);
+    border: 1px solid var(--rule-strong);
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  .frame__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--gold);
+    color: #fff;
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .board {
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: clamp(0.9rem, 2.5vw, 1.6rem);
+    max-width: 46rem;
+  }
+
+  .board__head {
+    padding-bottom: var(--sp-2);
+    border-bottom: 2px solid var(--pine);
+  }
+
+  .board__subject {
+    font-family: var(--serif);
+    font-size: var(--t-md);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .board__date {
+    margin-top: 0.2rem;
+    font-size: var(--t-xs);
+    color: var(--ink-3);
+  }
+
+  .board__block {
+    padding-block: var(--sp-3);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .board__block h3 {
+    font-family: var(--sans);
+    font-size: var(--t-sm);
+    font-weight: 620;
+  }
+
+  .funnel,
+  .channels {
+    margin-top: 0.7rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .funnel li,
+  .channels li {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    align-items: center;
+    gap: var(--sp-2);
+  }
+
+  .funnel__label,
+  .channels__label {
+    font-size: var(--t-xs);
+    color: var(--ink-2);
+  }
+
+  .funnel__track,
+  .channels__track {
+    display: block;
+    height: 0.85rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+
+  .funnel__bar {
+    display: block;
+    height: 100%;
+    background: var(--pine);
+  }
+
+  .channels__bar {
+    display: block;
+    height: 100%;
+    background: var(--gold-bright);
+  }
+
+  .board__caption {
+    margin-top: 0.5rem;
+    font-size: var(--t-xs);
+    color: var(--ink-3);
+    line-height: 1.45;
+  }
+
+  .board__foot {
+    padding-top: var(--sp-3);
+  }
+
+  .board__foot-title {
+    font-size: var(--t-xs);
+    font-weight: 620;
+    letter-spacing: 0.03em;
+    color: var(--gold);
+  }
+
+  .board__foot ul {
+    margin-top: 0.5rem;
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .board__foot li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: var(--t-xs);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  .board__foot li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 0.4rem;
+    height: 1px;
+    background: var(--rule-strong);
+  }
+
+  @media (max-width: 34rem) {
+    .funnel li,
+    .channels li {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

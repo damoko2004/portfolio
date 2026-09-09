@@ -6,6 +6,7 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = content[lang];
+const backgroundHref = lang === 'fr' ? '/parcours/' : '/en/background/';
 ---
 
 <section class="section" id="missions">
@@ -53,6 +54,10 @@ const t = content[lang];
         ))
       }
     </div>
+
+    <p class="more">
+      <a class="link" href={backgroundHref}>{t.experience.backgroundLink}</a>
+    </p>
   </div>
 </section>
 
@@ -151,6 +156,11 @@ const t = content[lang];
 
   .job__stack {
     margin-top: var(--sp-3);
+  }
+
+  .more {
+    margin-top: var(--sp-4);
+    font-size: var(--t-sm);
   }
 
   .job__case {

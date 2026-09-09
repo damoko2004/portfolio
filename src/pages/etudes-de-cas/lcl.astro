@@ -1,20 +1,20 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CaseBody from '../../components/CaseBody.astro';
-import EmailMock from '../../components/EmailMock.astro';
-import { caseRte } from '../../data/case-rte';
+import DashboardMock from '../../components/DashboardMock.astro';
+import { caseLcl } from '../../data/case-lcl';
 import { routes } from '../../data/content';
-const c = caseRte.fr;
+const c = caseLcl.fr;
 ---
 
 <Base
   lang="fr"
   title={c.meta.title}
   description={c.meta.description}
-  altFr={routes.fr.caseRte}
-  altEn={routes.en.caseRte}
+  altFr={routes.fr.caseLcl}
+  altEn={routes.en.caseLcl}
 >
   <CaseBody lang="fr" data={c}>
-    <EmailMock slot="mock" mock={c.mock} />
+    <DashboardMock slot="mock" mock={c.mock} />
   </CaseBody>
 </Base>

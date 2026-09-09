@@ -1,14 +1,13 @@
 ---
 import PageHead from './PageHead.astro';
-import EmailMock from './EmailMock.astro';
-import { caseRte } from '../data/case-rte';
 import { routes, type Lang } from '../data/content';
 
 interface Props {
   lang: Lang;
+  /** Données du cas : voir src/data/case-rte.ts ou case-lcl.ts. */
+  data: any;
 }
-const { lang } = Astro.props;
-const c = caseRte[lang];
+const { lang, data: c } = Astro.props;
 const r = routes[lang];
 ---
 
@@ -50,7 +49,7 @@ const r = routes[lang];
       ))
     }
 
-    <EmailMock mock={c.mock} />
+    <slot name="mock" />
 
     <section class="transfer">
       <h2>{c.transferTitle}</h2>
@@ -75,7 +74,7 @@ const r = routes[lang];
     </div>
     <p class="cta__actions">
       <a class="btn btn--gold" href={`${r.home}#contact`}>{c.cta.button}</a>
-      <a class="btn btn--ghost-light" href={`${r.home}#missions`}>{c.cta.back}</a>
+      <a class="btn btn--ghost-light" href={r.cases}>{c.cta.back}</a>
     </p>
   </div>
 </section>

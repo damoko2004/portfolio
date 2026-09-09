@@ -1,0 +1,138 @@
+---
+import PageHead from './PageHead.astro';
+import { pages } from '../data/pages';
+import { routes, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = pages[lang].cases;
+const r = routes[lang];
+---
+
+<PageHead eyebrow={c.eyebrow} title={c.title} lede={c.lede} />
+
+<section class="section">
+  <div class="wrap">
+    <ul class="cases">
+      {
+        c.items.map((item) => (
+          <li class="case">
+            <div class="case__rail">
+              <p class="case__period">{item.period}</p>
+              <p class="case__org">{item.org}</p>
+              <p class="case__sector">{item.sector}</p>
+            </div>
+            <div class="case__body">
+              <h2>
+                <a href={item.href}>{item.title}</a>
+              </h2>
+              <p class="case__desc">{item.desc}</p>
+              <ul class="tags">
+                {item.tags.map((t) => (
+                  <li class="tag">{t}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="more">
+      <a class="btn btn--ink" href={`${r.home}#contact`}>{c.cta}</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .cases {
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .case {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    gap: var(--sp-4);
+    padding-block: var(--sp-5);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .case__period {
+    font-size: var(--t-sm);
+    font-weight: 560;
+  }
+
+  .case__org {
+    margin-top: 0.5rem;
+    font-family: var(--serif);
+    font-size: var(--t-lg);
+    line-height: 1.15;
+  }
+
+  .case__sector {
+    margin-top: 0.35rem;
+    font-size: var(--t-xs);
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  .case__body h2 {
+    font-size: var(--t-xl);
+    max-width: 24ch;
+  }
+
+  .case__body h2 a {
+    text-decoration: none;
+    background-image: linear-gradient(var(--gold), var(--gold));
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.2s;
+  }
+
+  .case__body h2 a:hover {
+    background-size: 100% 1px;
+    color: var(--gold);
+  }
+
+  .case__desc {
+    margin-top: var(--sp-2);
+    max-width: var(--measure);
+    font-size: var(--t-md);
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .case__body .tags {
+    margin-top: var(--sp-3);
+  }
+
+  .more {
+    margin-top: var(--sp-4);
+  }
+
+  @media (max-width: 62rem) {
+    .case {
+      grid-template-columns: 1fr;
+      gap: var(--sp-2);
+      padding-block: var(--sp-4);
+    }
+
+    .case__rail {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 1rem;
+      padding-bottom: var(--sp-2);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .case__org,
+    .case__sector,
+    .case__period {
+      margin-top: 0;
+    }
+  }
+</style>
