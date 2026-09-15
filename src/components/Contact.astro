@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import { content, links, type Lang } from '../data/content';
 
 interface Props {
@@ -59,7 +60,7 @@ const cv = lang === 'fr' ? links.cvFr : links.cvEn;
         >
           {t.contact.copy}
         </button>
-        <a class="btn btn--ghost-light" href={cv} download>{t.contact.cvLabel}</a>
+        <a class="btn btn--ghost-light" href={withBase(cv)} download>{t.contact.cvLabel}</a>
       </div>
     </div>
   </div>

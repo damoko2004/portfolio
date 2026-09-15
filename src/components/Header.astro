@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import { content, links, type Lang } from '../data/content';
 
 interface Props {
@@ -14,7 +15,8 @@ const cv = lang === 'fr' ? links.cvFr : links.cvEn;
 // Sur une page interne, les ancres doivent repartir vers l'accueil.
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const onHome = path === '/' || path === '/en';
-const resolve = (href: string) => (href.startsWith('#') && !onHome ? `${home}${href}` : href);
+const resolve = (href: string) =>
+  href.startsWith('#') ? (onHome ? href : withBase(`${home}${href}`)) : withBase(href);
 
 // La bascule FR/EN pointe vers l'équivalent de la page courante.
 const otherHref = lang === 'fr' ? altEn : altFr;
@@ -22,7 +24,7 @@ const otherHref = lang === 'fr' ? altEn : altFr;
 
 <header class="site-header">
   <div class="wrap bar">
-    <a class="mark" href={home}>
+    <a class="mark" href={withBase(home)}>
       <span class="mark__glyph" aria-hidden="true">DA</span>
       <span class="mark__name">Dikers Amoko</span>
     </a>
@@ -42,10 +44,10 @@ const otherHref = lang === 'fr' ? altEn : altFr;
     </nav>
 
     <div class="tail">
-      <a class="lang" href={otherHref} hreflang={lang === 'fr' ? 'en' : 'fr'}>
+      <a class="lang" href={withBase(otherHref)} hreflang={lang === 'fr' ? 'en' : 'fr'}>
         {lang === 'fr' ? 'EN' : 'FR'}
       </a>
-      <a class="cv" href={cv} download>{t.nav.cv}</a>
+      <a class="cv" href={withBase(cv)} download>{t.nav.cv}</a>
       <button
         class="burger"
         type="button"
@@ -69,7 +71,7 @@ const otherHref = lang === 'fr' ? altEn : altFr;
         ))
       }
       <li>
-        <a href={cv} download>{t.nav.cv}</a>
+        <a href={withBase(cv)} download>{t.nav.cv}</a>
       </li>
     </ul>
   </nav>

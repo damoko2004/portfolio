@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import PageHead from './PageHead.astro';
 import Skills from './Skills.astro';
 import Background from './Background.astro';
@@ -19,7 +20,7 @@ const r = routes[lang];
 
 <section class="section--tight closing">
   <div class="wrap">
-    <a class="btn btn--ink" href={`${r.home}#contact`}>{b.cta}</a>
+    <a class="btn btn--ink" href={withBase(`${r.home}#contact`)}>{b.cta}</a>
   </div>
 </section>
 

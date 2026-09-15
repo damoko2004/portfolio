@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import PageHead from './PageHead.astro';
 import { pages } from '../data/pages';
 import { routes, type Lang } from '../data/content';
@@ -26,7 +27,7 @@ const r = routes[lang];
             </div>
             <div class="case__body">
               <h2>
-                <a href={item.href}>{item.title}</a>
+                <a href={withBase(item.href)}>{item.title}</a>
               </h2>
               <p class="case__desc">{item.desc}</p>
               <ul class="tags">
@@ -41,7 +42,7 @@ const r = routes[lang];
     </ul>
 
     <p class="more">
-      <a class="btn btn--ink" href={`${r.home}#contact`}>{c.cta}</a>
+      <a class="btn btn--ink" href={withBase(`${r.home}#contact`)}>{c.cta}</a>
     </p>
   </div>
 </section>

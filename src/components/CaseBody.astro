@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import PageHead from './PageHead.astro';
 import { routes, type Lang } from '../data/content';
 
@@ -73,8 +74,8 @@ const r = routes[lang];
       <p class="prose cta__body">{c.cta.body}</p>
     </div>
     <p class="cta__actions">
-      <a class="btn btn--gold" href={`${r.home}#contact`}>{c.cta.button}</a>
-      <a class="btn btn--ghost-light" href={r.cases}>{c.cta.back}</a>
+      <a class="btn btn--gold" href={withBase(`${r.home}#contact`)}>{c.cta.button}</a>
+      <a class="btn btn--ghost-light" href={withBase(r.cases)}>{c.cta.back}</a>
     </p>
   </div>
 </section>

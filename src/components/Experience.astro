@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import { content, type Lang } from '../data/content';
 
 interface Props {
@@ -44,7 +45,7 @@ const backgroundHref = lang === 'fr' ? '/parcours/' : '/en/background/';
               </ul>
               {job.caseUrl && (
                 <p class="job__case">
-                  <a class="link" href={job.caseUrl}>
+                  <a class="link" href={withBase(job.caseUrl)}>
                     {job.caseLabel}
                   </a>
                 </p>
@@ -56,7 +57,7 @@ const backgroundHref = lang === 'fr' ? '/parcours/' : '/en/background/';
     </div>
 
     <p class="more">
-      <a class="link" href={backgroundHref}>{t.experience.backgroundLink}</a>
+      <a class="link" href={withBase(backgroundHref)}>{t.experience.backgroundLink}</a>
     </p>
   </div>
 </section>

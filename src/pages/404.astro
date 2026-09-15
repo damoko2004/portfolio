@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import Base from '../layouts/Base.astro';
 ---
 
@@ -12,8 +13,8 @@ import Base from '../layouts/Base.astro';
         les publications et les coordonnées.
       </p>
       <p class="actions">
-        <a class="btn btn--ink" href="/">Retour à l’accueil</a>
-        <a class="btn btn--ghost" href="/en/">English version</a>
+        <a class="btn btn--ink" href={withBase('/')}>Retour à l’accueil</a>
+        <a class="btn btn--ghost" href={withBase('/en/')}>English version</a>
       </p>
     </div>
   </section>
