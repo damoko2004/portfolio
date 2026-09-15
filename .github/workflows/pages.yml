@@ -11,10 +11,15 @@ on:
   push:
     branches: [main]
   # Rafraîchit les téléchargements CRAN affichés sur la page Publications.
-  # 2 minutes après chaque heure, pour éviter la minute pleine où GitHub
-  # concentre le plus de tâches planifiées.
+  #
+  # GitHub planifie en UTC et ne suit pas l'heure d'été. 23:02 UTC correspond
+  # donc à 01:02 à Paris d'avril à octobre, et à 00:02 le reste de l'année.
+  # Pour viser 01:02 en hiver, utilisez '2 0 * * *'.
+  #
+  # Les 2 minutes après l'heure évitent la minute pleine, où GitHub concentre
+  # le plus de tâches planifiées et les retarde souvent.
   schedule:
-    - cron: '2 * * * *'
+    - cron: '2 23 * * *'
   workflow_dispatch:
 
 permissions:
