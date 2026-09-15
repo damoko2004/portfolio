@@ -9,6 +9,7 @@ interface Props {
 const { lang } = Astro.props;
 const l = pages[lang].legal;
 
+// Les champs non renseignés sont retirés plutôt qu'affichés vides.
 const rows = [
   { label: l.labels.name, value: legalIdentity.name },
   { label: l.labels.status, value: legalIdentity.status },
@@ -19,7 +20,7 @@ const rows = [
   { label: l.labels.phone, value: legalIdentity.phone },
   { label: l.labels.director, value: legalIdentity.director },
   { label: l.labels.host, value: legalIdentity.host },
-];
+].filter((row) => row.value.trim() !== '');
 ---
 
 <PageHead eyebrow={l.eyebrow} title={l.title} lede={l.lede} />

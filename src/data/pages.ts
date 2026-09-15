@@ -2,20 +2,23 @@
 // Pages secondaires : index des études de cas, parcours, mentions légales.
 // ---------------------------------------------------------------------------
 
-// --- À COMPLÉTER --------------------------------------------------------
-// Renseignez ces informations avant de publier les mentions légales. Un site
-// professionnel qui commercialise des prestations en France doit permettre
-// d'identifier son éditeur. Faites relire par un juriste si vous avez un doute.
+// Identité de l'éditeur affichée sur la page mentions légales.
+// Un champ laissé vide ('') disparaît de la page : rien ne casse.
+//
+// Si vous exercez sous un statut déclaré, renseignez `status`, `siret`, `vat`
+// et `address` : un site professionnel qui commercialise des prestations en
+// France doit permettre d'identifier son éditeur. En cas de doute sur la
+// formulation exacte, faites relire par un juriste.
 export const legalIdentity = {
   name: 'Dikers Amoko',
-  status: 'À COMPLÉTER - statut juridique (entreprise individuelle, EURL, SASU…)',
-  siret: 'À COMPLÉTER - numéro SIRET',
-  vat: 'À COMPLÉTER - numéro de TVA intracommunautaire, ou mention de franchise en base',
-  address: 'À COMPLÉTER - adresse du siège',
+  status: '',
+  siret: '',
+  vat: '',
+  address: '',
   email: 'diamoko@gmail.com',
   phone: '06 58 47 95 06',
   director: 'Dikers Amoko',
-  host: 'Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis - netlify.com',
+  host: 'GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis - github.com',
 };
 
 export const pages = {
