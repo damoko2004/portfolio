@@ -17,7 +17,7 @@ pas à pas au terminal, git et déploiement.
 
 ```bash
 npm install
-npm run dev      # http://localhost:4321
+npm run dev      # http://localhost:4321/portfolio/
 npm run build    # génère dist/
 npm run preview  # sert dist/ en local
 ```
@@ -30,7 +30,7 @@ Tout se passe dans **`src/data/content.ts`**, en haut du fichier :
 
 | Champ | À faire |
 |---|---|
-| `SITE_URL` | Mettre l'URL définitive. Elle alimente les balises canoniques, l'Open Graph et le sitemap. |
+| `SITE_URL` et `BASE_PATH` | Adresse de publication. Déjà réglées sur GitHub Pages. À ne changer que si vous renommez le dépôt ou prenez un nom de domaine. |
 | `links.linkedin` | **Vérifier l'URL** — elle a été devinée à partir du nom, c'est le seul lien non confirmé. |
 | `public/robots.txt` | Remplacer l'URL du sitemap par `SITE_URL`. |
 | `src/assets/portrait.jpg` | Déposer votre photo (voir plus bas). |
@@ -79,20 +79,45 @@ image faite dans un outil de design, remplacez simplement le fichier.
 
 ## Déployer
 
-### Netlify
+Le site est publié sur **GitHub Pages**, à `https://damoko2004.github.io/portfolio/`.
 
-`netlify.toml` est déjà configuré (commande de build, dossier `dist`, en-têtes de
-sécurité, cache long sur les assets versionnés).
+Tout `git push` sur `main` déclenche le workflow `.github/workflows/pages.yml` :
+installation des dépendances, `npm run build`, publication. Comptez deux à trois
+minutes.
 
-- **Depuis Git** : connectez le dépôt, Netlify lit `netlify.toml` et publie.
-- **Sans Git** : lancez `npm run build`, puis glissez le dossier `dist` sur
-  [app.netlify.com/drop](https://app.netlify.com/drop).
+Réglage à faire une seule fois, côté GitHub : Settings → Pages → Source →
+**GitHub Actions** (et non « Deploy from a branch »). Le dépôt doit être public,
+sauf plan payant.
 
-### Vercel, Cloudflare Pages, GitHub Pages
+### Si vous renommez le dépôt
 
-Commande de build `npm run build`, dossier de sortie `dist`. Pour GitHub Pages,
-ajoutez `base: '/nom-du-depot'` dans `astro.config.mjs` si le site n'est pas à la
-racine du domaine.
+Le site vit dans un sous-dossier du domaine, donc le nom du dépôt fait partie de
+l'URL. Changez `BASE_PATH` dans `src/data/content.ts` — par exemple `/mon-site/`
+pour un dépôt nommé `mon-site` — et la ligne `Sitemap:` de `public/robots.txt`.
+
+### Si vous prenez un nom de domaine
+
+C'est le moment où le sous-dossier disparaît. Dans `src/data/content.ts` :
+
+```ts
+export const SITE_URL = 'https://dikersamoko.fr';
+export const BASE_PATH = '/';
+```
+
+Puis déclarez le domaine dans Settings → Pages → Custom domain, et ajoutez un
+fichier `public/CNAME` contenant la seule ligne `dikersamoko.fr`.
+
+### Construire pour une autre cible
+
+Deux variables d'environnement permettent de produire une variante sans toucher
+au code :
+
+```bash
+PUBLIC_BASE_PATH=/ PUBLIC_SITE_URL=https://exemple.fr npm run build
+```
+
+`netlify.toml` est conservé dans le dépôt : il suffirait à republier sur Netlify
+si besoin, avec ces variables.
 
 ## Ajouter un formulaire de contact
 

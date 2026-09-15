@@ -1,10 +1,9 @@
-# Publie une copie du site sur GitHub Pages, sous https://damoko2004.github.io/portfolio/
+# Publie le site sur GitHub Pages, à https://damoko2004.github.io/portfolio/
 #
-# Netlify reste le site de référence : toutes les pages publiées ici portent une
-# balise canonique pointant vers l'adresse Netlify, pour que les moteurs de
-# recherche n'indexent qu'une seule version.
+# C'est l'adresse de référence : les balises canoniques, le sitemap et l'image
+# de partage y pointent tous.
 #
-# Si vous renommez le dépôt, changez PUBLIC_BASE_PATH ci-dessous.
+# Si vous renommez le dépôt, changez BASE_PATH dans src/data/content.ts.
 
 name: Publier sur GitHub Pages
 
@@ -35,10 +34,7 @@ jobs:
 
       - run: npm ci
 
-      - name: Construire pour GitHub Pages
-        env:
-          PUBLIC_BASE_PATH: /portfolio/
-          PUBLIC_SITE_URL: https://damoko2004.github.io
+      - name: Construire le site
         run: npm run build
 
       - uses: actions/configure-pages@v5

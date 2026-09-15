@@ -59,7 +59,15 @@ export const routes = {
   },
 } as const;
 
-export const SITE_URL = 'https://dikers-amoko.netlify.app';
+/** Domaine de publication, sans chemin. */
+export const SITE_URL = 'https://damoko2004.github.io';
+
+/** Chemin de base : le site vit dans un sous-dossier du domaine GitHub Pages.
+ *  Si vous renommez le dépôt, changez cette valeur et le workflow Pages. */
+export const BASE_PATH = '/portfolio/';
+
+/** Adresse complète de la page d'accueil. */
+export const SITE_HOME = SITE_URL + BASE_PATH;
 
 export interface Job {
   period: string;
