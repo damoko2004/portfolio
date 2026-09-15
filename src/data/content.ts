@@ -92,6 +92,8 @@ export interface PubItem {
   url: string;
   cta: string;
   extra?: { label: string; url: string }[];
+  /** 'cran' : afficher les téléchargements relevés sur le miroir CRAN. */
+  live?: 'cran';
 }
 
 export interface EduItem {
@@ -364,6 +366,14 @@ const fr = {
     title: 'Publications & open source',
     intro:
       'Ce que j’applique en mission, je l’écris et je le publie. Deux ouvrages professionnels parus en 2026 et un package R disponible sur le CRAN.',
+    live: {
+      title: 'Téléchargements sur le CRAN',
+      total: 'Depuis la publication',
+      perDay: 'Moyenne par jour',
+      lastMonth: '30 derniers jours',
+      source: 'Source : miroir CRAN de RStudio, qui ne couvre qu’une partie des installations réelles.',
+      updated: 'Relevé du',
+    },
     note: 'Les deux ouvrages sont aussi disponibles en version numérique.',
     noteCta: 'Voir la boutique',
     noteUrl: links.ebookStore,
@@ -404,6 +414,7 @@ const fr = {
           { label: 'CRAN', url: links.cran },
           { label: 'R-universe', url: links.cranUniverse },
         ],
+        live: 'cran',
       },
     ] as PubItem[],
   },
@@ -750,6 +761,14 @@ const en: typeof fr = {
     title: 'Publications & open source',
     intro:
       'What I apply on assignments, I write down and publish. Two professional books released in 2026 and an R package available on CRAN.',
+    live: {
+      title: 'Downloads from CRAN',
+      total: 'Since release',
+      perDay: 'Daily average',
+      lastMonth: 'Last 30 days',
+      source: 'Source: the RStudio CRAN mirror, which covers only a share of actual installations.',
+      updated: 'Measured on',
+    },
     note: 'Both books are also available as ebooks.',
     noteCta: 'Visit the store',
     noteUrl: links.ebookStore,
@@ -790,6 +809,7 @@ const en: typeof fr = {
           { label: 'CRAN', url: links.cran },
           { label: 'R-universe', url: links.cranUniverse },
         ],
+        live: 'cran',
       },
     ] as PubItem[],
   },

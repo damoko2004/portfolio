@@ -10,6 +10,11 @@ name: Publier sur GitHub Pages
 on:
   push:
     branches: [main]
+  # Rafraîchit les téléchargements CRAN affichés sur la page Publications.
+  # 2 minutes après chaque heure, pour éviter la minute pleine où GitHub
+  # concentre le plus de tâches planifiées.
+  schedule:
+    - cron: '2 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -33,6 +38,9 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Relever les téléchargements CRAN
+        run: node scripts/fetch-cran-stats.mjs
 
       - name: Construire le site
         run: npm run build
