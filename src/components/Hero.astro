@@ -232,8 +232,14 @@ const portrait = Object.values(found)[0]?.default;
     height: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    filter: grayscale(1) contrast(1.05);
+    /* Noir et blanc : cohérent avec une palette restreinte, et neutralise
+       l'arrière-plan de la photo. Retirez cette ligne pour la couleur. */
+    filter: grayscale(1) contrast(1.06);
+    /* Le fond clair de la photo se confondrait avec la bande : ce filet
+       délimite le cadre. */
+    border: 1px solid var(--rule-strong);
     position: relative;
+    background: var(--card);
   }
 
   .portrait__monogram {
