@@ -454,6 +454,31 @@ const fr = {
           'Tableaux de bord interactifs, storytelling data, comités de pilotage, vulgarisation auprès d’audiences non techniques.',
       },
     ],
+    surveyTitle: 'Enquêtes, échantillonnage et études',
+    surveyIntro:
+      'Un métier à part entière, hérité de la statistique publique et des enquêtes de terrain : concevoir le dispositif de mesure avant de mesurer.',
+    surveyGroups: [
+      {
+        name: 'Échantillonnage & méthodes',
+        body:
+          'Protocoles méthodologiques, plans de sondage à plusieurs degrés, calcul des tailles d’échantillon, stratification, pondérations, traitement de la non-réponse, redressement, calcul de précision.',
+      },
+      {
+        name: 'Collecte de terrain',
+        body:
+          'Conception et test des questionnaires, programmation électronique (XLSForm, KoboToolbox, ODK, CSPro), recrutement, formation et supervision d’enquêteurs, organisation logistique, contrôle qualité en cours de collecte.',
+      },
+      {
+        name: 'Études de référence & indicateurs',
+        body:
+          'Situations de référence, cadres de résultats, définition et calcul de valeurs de base pour indicateurs d’impact, d’effet et de résultat, évaluations à mi-parcours et finales, mesure d’effets.',
+      },
+      {
+        name: 'Analyse & restitution d’enquête',
+        body:
+          'Statistique descriptive et inférentielle, économétrie, analyses multivariées, mesure des revenus et des conditions de vie des ménages, rapports exploitables, tableaux de synthèse, restitution aux commanditaires.',
+      },
+    ],
     stackTitle: 'Environnement technique',
     stack: [
       { name: 'Langages', items: ['Python', 'R', 'SQL', 'SAS', 'VBA'] },
@@ -496,7 +521,6 @@ const fr = {
   footer: {
     tagline: 'Data Scientist senior · Industrialisation · Product Owner Data & IA',
     rights: 'Tous droits réservés.',
-    built: 'Site construit avec Astro.',
     linksTitle: 'Aller à',
     pages: [
       { href: '/', label: 'Accueil' },
@@ -848,6 +872,31 @@ const en: typeof fr = {
           'Interactive dashboards, data storytelling, steering committees, making technical results legible to non-technical audiences.',
       },
     ],
+    surveyTitle: 'Surveys, sampling and studies',
+    surveyIntro:
+      'A discipline in its own right, inherited from official statistics and field surveys: designing the measurement instrument before measuring anything.',
+    surveyGroups: [
+      {
+        name: 'Sampling & methodology',
+        body:
+          'Methodological protocols, multi-stage sampling designs, sample size calculation, stratification, weighting, non-response treatment, calibration, precision estimation.',
+      },
+      {
+        name: 'Field data collection',
+        body:
+          'Questionnaire design and testing, electronic programming (XLSForm, KoboToolbox, ODK, CSPro), enumerator recruitment, training and supervision, logistics, in-field quality control.',
+      },
+      {
+        name: 'Baseline studies & indicators',
+        body:
+          'Baseline situations, results frameworks, definition and computation of baseline values for impact, outcome and output indicators, mid-term and final evaluations, effect measurement.',
+      },
+      {
+        name: 'Survey analysis & reporting',
+        body:
+          'Descriptive and inferential statistics, econometrics, multivariate analysis, measurement of household income and living conditions, actionable reports, summary tables, presentation to commissioning bodies.',
+      },
+    ],
     stackTitle: 'Technical environment',
     stack: [
       { name: 'Languages', items: ['Python', 'R', 'SQL', 'SAS', 'VBA'] },
@@ -890,7 +939,6 @@ const en: typeof fr = {
   footer: {
     tagline: 'Senior Data Scientist · Industrialisation · Data & AI Product Owner',
     rights: 'All rights reserved.',
-    built: 'Built with Astro.',
     linksTitle: 'Go to',
     pages: [
       { href: '/en/', label: 'Home' },

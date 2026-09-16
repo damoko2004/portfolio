@@ -27,7 +27,6 @@ const taglineParts = t.footer.tagline.split(' · ');
 
     <p class="foot__legal">
       © {year} Dikers Amoko. {t.footer.rights}
-      <span class="foot__built">{t.footer.built}</span>
     </p>
   </div>
 </footer>
@@ -93,11 +92,6 @@ const taglineParts = t.footer.tagline.split(' · ');
   .foot__legal {
     font-size: var(--t-xs);
     text-align: right;
-  }
-
-  .foot__built {
-    display: block;
-    color: var(--ink-3);
   }
 
   @media (max-width: 48rem) {

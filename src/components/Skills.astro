@@ -26,6 +26,21 @@ const t = content[lang];
       }
     </dl>
 
+    <section class="survey">
+      <h3>{t.skills.surveyTitle}</h3>
+      <p class="survey__intro">{t.skills.surveyIntro}</p>
+      <dl class="groups">
+        {
+          t.skills.surveyGroups.map((g) => (
+            <div class="group">
+              <dt>{g.name}</dt>
+              <dd>{g.body}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
     <div class="stack">
       <h3>{t.skills.stackTitle}</h3>
       <div class="stack__grid">
@@ -71,6 +86,24 @@ const t = content[lang];
     font-size: var(--t-sm);
     line-height: 1.6;
     max-width: var(--measure);
+  }
+
+  .survey {
+    margin-top: var(--sp-5);
+  }
+
+  .survey h3 {
+    font-size: var(--t-lg);
+    font-weight: 470;
+  }
+
+  .survey__intro {
+    margin-top: var(--sp-2);
+    padding-bottom: var(--sp-3);
+    max-width: var(--measure);
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+    line-height: 1.6;
   }
 
   .stack {
