@@ -44,7 +44,6 @@ export const routes = {
     caseRte: '/etudes-de-cas/rte/',
     caseLcl: '/etudes-de-cas/lcl/',
     caseYubora: '/etudes-de-cas/yubora/',
-    background: '/parcours/',
     legal: '/mentions-legales/',
   },
   en: {
@@ -54,7 +53,6 @@ export const routes = {
     caseRte: '/en/case-studies/rte/',
     caseLcl: '/en/case-studies/lcl/',
     caseYubora: '/en/case-studies/yubora/',
-    background: '/en/background/',
     legal: '/en/legal-notice/',
   },
 } as const;
@@ -128,6 +126,7 @@ const fr = {
       { href: '/etudes-de-cas/', label: 'Études de cas' },
       { href: '/prestations/', label: 'Prestations' },
       { href: '#publications', label: 'Publications' },
+      { href: '#parcours', label: 'Parcours' },
       { href: '#contact', label: 'Contact' },
     ],
     cv: 'CV (PDF)',
@@ -153,18 +152,23 @@ const fr = {
   },
   workflow: {
     title: 'De la donnée brute à la décision',
-    note: 'La chaîne que je couvre entièrement. Chaque étape produit quelque chose de vérifiable par la suivante.',
+    note: 'La chaîne que je couvre entièrement - jusqu’à produire la donnée elle-même quand elle n’existe pas. Chaque étape produit quelque chose de vérifiable par la suivante.',
     entry: 'Besoin métier',
     exit: 'Décision',
     stages: [
       {
+        name: 'Conception de la mesure',
+        desc: 'Quand la donnée n’existe pas encore : protocole, plan de sondage, questionnaire, taille d’échantillon.',
+        tools: ['XLSForm', 'KoboToolbox', 'ODK', 'CSPro'],
+      },
+      {
         name: 'Collecte',
-        desc: 'Ingestion automatisée des sources internes et externes, avec journalisation de ce qui entre.',
+        desc: 'Ingestion automatisée des sources, ou conduite d’une collecte de terrain supervisée.',
         tools: ['API REST', 'SQL', 'Teradata', 'SQL Server'],
       },
       {
         name: 'Qualité & consolidation',
-        desc: 'Contrôles de complétude et de cohérence, réconciliation multi-sources, vue unifiée, datamarts.',
+        desc: 'Contrôles de complétude, réconciliation multi-sources, non-réponse et redressement, vue unifiée.',
         tools: ['R', 'Python', 'Dataiku', 'DBeaver'],
       },
       {
@@ -317,7 +321,7 @@ const fr = {
         stack: ['SAS', 'R', 'Python', 'SQL', 'DBeaver'],
       },
     ] as Job[],
-    backgroundLink: 'Voir le parcours complet et les compétences',
+    backgroundLink: 'Voir les compétences détaillées et le parcours',
     earlierTitle: 'Avant cela',
     earlier: [
       {
@@ -526,7 +530,7 @@ const fr = {
       { href: '/', label: 'Accueil' },
       { href: '/prestations/', label: 'Prestations' },
       { href: '/etudes-de-cas/', label: 'Études de cas' },
-      { href: '/parcours/', label: 'Parcours & compétences' },
+      { href: '/#parcours', label: 'Parcours & compétences' },
       { href: '/mentions-legales/', label: 'Mentions légales' },
     ],
   },
@@ -548,6 +552,7 @@ const en: typeof fr = {
       { href: '/en/case-studies/', label: 'Case studies' },
       { href: '/en/services/', label: 'Services' },
       { href: '#publications', label: 'Publications' },
+      { href: '#parcours', label: 'Background' },
       { href: '#contact', label: 'Contact' },
     ],
     cv: 'CV (PDF, in French)',
@@ -573,18 +578,23 @@ const en: typeof fr = {
   },
   workflow: {
     title: 'From raw data to decision',
-    note: 'The chain I cover end to end. Each step produces something the next one can verify.',
+    note: 'The chain I cover end to end - including producing the data itself when it does not exist. Each step produces something the next one can verify.',
     entry: 'Business need',
     exit: 'Decision',
     stages: [
       {
+        name: 'Measurement design',
+        desc: 'When the data does not exist yet: protocol, sampling design, questionnaire, sample size.',
+        tools: ['XLSForm', 'KoboToolbox', 'ODK', 'CSPro'],
+      },
+      {
         name: 'Collection',
-        desc: 'Automated ingestion of internal and external sources, logging what comes in.',
+        desc: 'Automated ingestion of sources, or running a supervised field collection.',
         tools: ['REST API', 'SQL', 'Teradata', 'SQL Server'],
       },
       {
         name: 'Quality & consolidation',
-        desc: 'Completeness and consistency checks, multi-source reconciliation, unified view, datamarts.',
+        desc: 'Completeness checks, multi-source reconciliation, non-response and weighting, unified view.',
         tools: ['R', 'Python', 'Dataiku', 'DBeaver'],
       },
       {
@@ -736,7 +746,7 @@ const en: typeof fr = {
         stack: ['SAS', 'R', 'Python', 'SQL', 'DBeaver'],
       },
     ] as Job[],
-    backgroundLink: 'See the full background and skills',
+    backgroundLink: 'See the detailed skills and background',
     earlierTitle: 'Earlier',
     earlier: [
       {
@@ -944,7 +954,7 @@ const en: typeof fr = {
       { href: '/en/', label: 'Home' },
       { href: '/en/services/', label: 'Services' },
       { href: '/en/case-studies/', label: 'Case studies' },
-      { href: '/en/background/', label: 'Background & skills' },
+      { href: '/en/#parcours', label: 'Background & skills' },
       { href: '/en/legal-notice/', label: 'Legal notice' },
     ],
   },

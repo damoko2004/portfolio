@@ -68,19 +68,6 @@ export const pages = {
       cta: 'Discuter de votre situation',
     },
 
-    background: {
-      meta: {
-        title: 'Parcours et compétences | Dikers Amoko',
-        description:
-          'Dix ans en banque, énergie, statistique publique, utilities et SaaS. Compétences détaillées, environnement technique, expériences antérieures, enseignement et formation.',
-      },
-      eyebrow: 'Parcours',
-      title: 'Dix ans, cinq secteurs, une même exigence',
-      lede:
-        'Le détail de ce que je sais faire, d’où je l’ai appris, et avec quels outils. Les missions récentes sont présentées sur la page d’accueil ; cette page rassemble tout le reste.',
-      cta: 'Me contacter',
-    },
-
     legal: {
       meta: {
         title: 'Mentions légales et confidentialité | Dikers Amoko',
@@ -175,19 +162,6 @@ export const pages = {
         },
       ],
       cta: 'Discuss your situation',
-    },
-
-    background: {
-      meta: {
-        title: 'Background and skills | Dikers Amoko',
-        description:
-          'Ten years across banking, energy, official statistics, utilities and SaaS. Detailed skills, technical environment, earlier roles, teaching and education.',
-      },
-      eyebrow: 'Background',
-      title: 'Ten years, five sectors, one standard',
-      lede:
-        'The detail of what I can do, where I learned it, and with which tools. Recent assignments are on the home page; this page gathers everything else.',
-      cta: 'Get in touch',
     },
 
     legal: {

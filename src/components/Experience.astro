@@ -7,7 +7,7 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = content[lang];
-const backgroundHref = lang === 'fr' ? '/parcours/' : '/en/background/';
+const backgroundHref = '#parcours';
 ---
 
 <section class="section" id="missions">
@@ -57,7 +57,7 @@ const backgroundHref = lang === 'fr' ? '/parcours/' : '/en/background/';
     </div>
 
     <p class="more">
-      <a class="link" href={withBase(backgroundHref)}>{t.experience.backgroundLink}</a>
+      <a class="link" href={backgroundHref}>{t.experience.backgroundLink}</a>
     </p>
   </div>
 </section>

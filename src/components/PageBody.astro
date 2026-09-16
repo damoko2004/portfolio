@@ -5,6 +5,8 @@ import Roles from './Roles.astro';
 import GenAI from './GenAI.astro';
 import Experience from './Experience.astro';
 import Publications from './Publications.astro';
+import Skills from './Skills.astro';
+import Background from './Background.astro';
 import Contact from './Contact.astro';
 import type { Lang } from '../data/content';
 
@@ -20,4 +22,6 @@ const { lang } = Astro.props;
 <GenAI lang={lang} />
 <Experience lang={lang} />
 <Publications lang={lang} />
+<Skills lang={lang} />
+<Background lang={lang} />
 <Contact lang={lang} />

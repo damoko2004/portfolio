@@ -116,7 +116,7 @@ const w = t.workflow;
 
   .pipe__stages {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     position: relative;
   }
 
@@ -218,6 +218,21 @@ const w = t.workflow;
   .across li:first-child {
     padding-left: 0;
     border-left: 0;
+  }
+
+  @media (max-width: 82rem) {
+    .pipe__stages {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      row-gap: var(--sp-4);
+    }
+
+    .pipe__stages::before {
+      display: none;
+    }
+
+    .stage {
+      border-top: 1px solid var(--rule-strong);
+    }
   }
 
   @media (max-width: 75rem) {
