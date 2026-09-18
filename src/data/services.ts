@@ -9,10 +9,10 @@ export const services = {
     meta: {
       title: 'Prestations freelance - Data Science, MLOps, Product Ownership | Dikers Amoko',
       description:
-        'Cinq façons de travailler ensemble : cadrage d’une feuille de route data, mise en production d’un modèle, industrialisation d’un existant, product ownership en temps partagé, audit d’une plateforme IA. Île-de-France et à distance.',
+        'Six façons de travailler ensemble : cadrage d’une feuille de route data, mise en production d’un modèle, industrialisation d’un existant, product ownership en temps partagé, audit d’une plateforme IA. Île-de-France et à distance.',
     },
     eyebrow: 'Prestations',
-    title: 'Cinq façons de travailler ensemble',
+    title: 'Six façons de travailler ensemble',
     lede:
       'Je n’interviens pas sur tout. Les missions ci-dessous correspondent aux situations où dix ans passés sur la chaîne complète de la donnée font une différence mesurable - et où un seul interlocuteur remplace utilement trois prestataires.',
     availability: 'Disponible pour une nouvelle mission - Île-de-France et à distance',
@@ -65,6 +65,19 @@ export const services = {
           'Recette fonctionnelle, comités de pilotage, suivi des livraisons',
           'Arbitrage technique face aux éditeurs et aux intégrateurs',
           'Adoption, formation des utilisateurs, transfert de compétences',
+        ],
+      },
+      {
+        title: 'Migration SAS vers R',
+        duration: '2 à 6 mois selon le patrimoine',
+        pitch:
+          'Des coûts de licence qui pèsent, des programmes que plus personne ne sait relire, ou un départ qui approche - et une production qu’il est hors de question de casser.',
+        deliverables: [
+          'Audit du patrimoine : cartographie des traitements, dépendances, priorisation de ce qui vaut la peine d’être migré',
+          'Réécriture aux standards R, en conservant à l’identique les règles métier et les contrôles',
+          'Stratégie de non-régression : jeu de référence figé, contrôles de volumétrie, clés, bornes et agrégats, tolérances écrites avant les tests',
+          'Recette conjointe où le métier valide l’équivalence, pas seulement l’exécution',
+          'Industrialisation, documentation, glossaire SAS vers R et formation des équipes',
         ],
       },
       {
@@ -150,7 +163,7 @@ export const services = {
         'Five ways to work together: framing a data roadmap, taking a model to production, industrialising existing work, fractional data product ownership, auditing an AI platform. Paris region and remote.',
     },
     eyebrow: 'Services',
-    title: 'Five ways to work together',
+    title: 'Six ways to work together',
     lede:
       'I do not take on everything. The engagements below match the situations where ten years across the full data chain make a measurable difference - and where one counterpart usefully replaces three vendors.',
     availability: 'Available for a new engagement - Paris region and remote',
@@ -203,6 +216,19 @@ export const services = {
           'Functional acceptance testing, steering committees, delivery tracking',
           'Technical arbitration facing vendors and integrators',
           'Adoption, user training, knowledge transfer',
+        ],
+      },
+      {
+        title: 'SAS to R migration',
+        duration: '2 to 6 months depending on the codebase',
+        pitch:
+          'Licence costs that weigh, programs nobody can read any more, or a retirement approaching - and a production chain that must not break.',
+        deliverables: [
+          'Codebase audit: mapping of processes and dependencies, prioritising what is worth migrating',
+          'Rewriting to R standards, keeping business rules and controls identical',
+          'Non-regression strategy: frozen reference dataset, checks on row counts, keys, bounds and aggregates, tolerances written before testing',
+          'Joint acceptance testing where the business validates equivalence, not just execution',
+          'Industrialisation, documentation, SAS-to-R glossary and team training',
         ],
       },
       {

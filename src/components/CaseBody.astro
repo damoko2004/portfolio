@@ -52,6 +52,23 @@ const r = routes[lang];
 
     <slot name="mock" />
 
+    {
+      c.guide && (
+        <section class="guide">
+          <div class="guide__text">
+            <h2>{c.guide.title}</h2>
+            <p>{c.guide.body}</p>
+          </div>
+          <p class="guide__action">
+            <a class="btn btn--gold" href={withBase(c.guide.url)} download>
+              {c.guide.cta}
+            </a>
+            <span class="guide__meta">{c.guide.meta}</span>
+          </p>
+        </section>
+      )
+    }
+
     <section class="transfer">
       <h2>{c.transferTitle}</h2>
       <div class="transfer__body">
@@ -168,6 +185,40 @@ const r = routes[lang];
     color: var(--ink-2);
   }
 
+  .guide {
+    margin-top: var(--sp-5);
+    background: var(--band);
+    border-left: 3px solid var(--gold);
+    padding: var(--sp-4);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--sp-4);
+    align-items: center;
+  }
+
+  .guide h2 {
+    font-size: var(--t-lg);
+  }
+
+  .guide__text p {
+    margin-top: var(--sp-2);
+    max-width: var(--measure);
+    font-size: var(--t-sm);
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .guide__action {
+    display: grid;
+    justify-items: start;
+    gap: 0.5rem;
+  }
+
+  .guide__meta {
+    font-size: var(--t-xs);
+    color: var(--ink-3);
+  }
+
   .transfer {
     margin-top: var(--sp-5);
     padding-top: var(--sp-4);
@@ -226,6 +277,11 @@ const r = routes[lang];
   }
 
   @media (max-width: 62rem) {
+    .guide {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
     .notice__inner,
     .chunk,
     .cta {

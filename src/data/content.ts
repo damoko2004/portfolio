@@ -44,6 +44,7 @@ export const routes = {
     caseRte: '/etudes-de-cas/rte/',
     caseLcl: '/etudes-de-cas/lcl/',
     caseYubora: '/etudes-de-cas/yubora/',
+    caseSasR: '/etudes-de-cas/migration-sas-r/',
     legal: '/mentions-legales/',
   },
   en: {
@@ -53,6 +54,7 @@ export const routes = {
     caseRte: '/en/case-studies/rte/',
     caseLcl: '/en/case-studies/lcl/',
     caseYubora: '/en/case-studies/yubora/',
+    caseSasR: '/en/case-studies/sas-to-r/',
     legal: '/en/legal-notice/',
   },
 } as const;
@@ -194,7 +196,7 @@ const fr = {
     title: 'Trois casquettes, un seul interlocuteur',
     intro:
       'La plupart des projets data échouent aux jonctions : entre le métier et la modélisation, entre le prototype et la production. Je tiens les trois maillons, donc les jonctions disparaissent.',
-    servicesLink: 'Voir les cinq formats d’intervention',
+    servicesLink: 'Voir les six formats d’intervention',
     items: [
       {
         title: 'Data Scientist',
@@ -319,6 +321,8 @@ const fr = {
           'Refonte technique - migration de programmes SAS vers R : cadrage, réécriture, documentation méthodologique et transfert aux équipes, au service de la reproductibilité.',
         ],
         stack: ['SAS', 'R', 'Python', 'SQL', 'DBeaver'],
+        caseUrl: '/etudes-de-cas/migration-sas-r/',
+        caseLabel: 'Lire l’étude de cas détaillée',
       },
     ] as Job[],
     backgroundLink: 'Voir les compétences détaillées et le parcours',
@@ -620,7 +624,7 @@ const en: typeof fr = {
     title: 'Three roles, one counterpart',
     intro:
       'Most data projects fail at the seams: between business and modelling, between prototype and production. I hold all three links, so the seams disappear.',
-    servicesLink: 'See the five engagement formats',
+    servicesLink: 'See the six engagement formats',
     items: [
       {
         title: 'Data Scientist',
@@ -744,6 +748,8 @@ const en: typeof fr = {
           'Technical overhaul - migrating SAS programs to R: framing, rewriting, methodological documentation and team handover, in service of reproducibility.',
         ],
         stack: ['SAS', 'R', 'Python', 'SQL', 'DBeaver'],
+        caseUrl: '/en/case-studies/sas-to-r/',
+        caseLabel: 'Read the detailed case study',
       },
     ] as Job[],
     backgroundLink: 'See the detailed skills and background',

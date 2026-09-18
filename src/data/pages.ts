@@ -25,12 +25,12 @@ export const pages = {
   fr: {
     cases: {
       meta: {
-        title: 'Études de cas - trois missions data en production | Dikers Amoko',
+        title: 'Études de cas - quatre missions data en production | Dikers Amoko',
         description:
           'Trois missions racontées en détail : supervision des interconnexions chez RTE, pilotage de l’acquisition digitale chez LCL, Customer Intelligence chez un éditeur SaaS. Méthode, architecture et arbitrages, sans données confidentielles.',
       },
       eyebrow: 'Études de cas',
-      title: 'Trois missions racontées comme elles se sont passées',
+      title: 'Quatre missions racontées comme elles se sont passées',
       lede:
         'Pas des listes de technologies, mais le raisonnement : quel était le problème, quelles décisions ont été prises, pourquoi celles-là, et ce qui restait une fois la mission terminée. Aucune donnée client n’y figure - c’est expliqué sur chaque page.',
       items: [
@@ -63,6 +63,16 @@ export const pages = {
             'Prévision du revenu récurrent, anticipation du churn, valeur client et tarification dynamique - avec quelques mois de recul seulement. Vision client unifiée, cohortes, modèles interprétables et intervalles affichés plutôt que chiffres nets.',
           tags: ['Python', 'Pandas', 'R', 'PostgreSQL', 'Power BI'],
           href: '/etudes-de-cas/yubora/',
+        },
+        {
+          sector: 'Statistique publique',
+          org: 'INSEE',
+          period: '2021 - 2023',
+          title: 'Migrer un patrimoine SAS vers R sans casser la production',
+          desc:
+            'Le blocage d’une migration n’est jamais le code : c’est que personne ne veut valider un chiffre qui aurait bougé. Jeu de référence figé, quatre familles de contrôles, tolérances écrites avant les tests, recette conjointe avec le métier. Guide de bonnes pratiques en téléchargement.',
+          tags: ['SAS', 'R', 'renv', 'testthat', 'Quarto'],
+          href: '/etudes-de-cas/migration-sas-r/',
         },
       ],
       cta: 'Discuter de votre situation',
@@ -126,7 +136,7 @@ export const pages = {
           'Three assignments told in detail: monitoring electricity interconnections at RTE, steering digital acquisition at LCL, Customer Intelligence at a SaaS vendor. Method, architecture and trade-offs, without confidential data.',
       },
       eyebrow: 'Case studies',
-      title: 'Three assignments told the way they happened',
+      title: 'Four assignments told the way they happened',
       lede:
         'Not lists of technologies, but the reasoning: what the problem was, which decisions were taken, why those ones, and what remained once the assignment ended. No client data appears - each page explains why.',
       items: [
@@ -159,6 +169,16 @@ export const pages = {
             'Recurring revenue forecasting, churn anticipation, customer value and dynamic pricing - on a few months of hindsight. Unified customer view, cohorts, interpretable models and intervals shown rather than clean numbers.',
           tags: ['Python', 'Pandas', 'R', 'PostgreSQL', 'Power BI'],
           href: '/en/case-studies/yubora/',
+        },
+        {
+          sector: 'Official statistics',
+          org: 'INSEE',
+          period: '2021 - 2023',
+          title: 'Migrating a SAS codebase to R without breaking production',
+          desc:
+            'What blocks a migration is never the code: it is that nobody wants to sign off on a figure that might have moved. Frozen reference dataset, four families of controls, tolerances written before testing, joint acceptance with the business. Best-practice guide available for download.',
+          tags: ['SAS', 'R', 'renv', 'testthat', 'Quarto'],
+          href: '/en/case-studies/sas-to-r/',
         },
       ],
       cta: 'Discuss your situation',

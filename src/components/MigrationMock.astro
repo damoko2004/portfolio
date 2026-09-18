@@ -1,0 +1,216 @@
+---
+// Reconstitution du contrôle de non-régression SAS contre R.
+// Les valeurs proviennent du fichier de contenu et sont SYNTHÉTIQUES : elles
+// illustrent la forme du livrable et ne doivent jamais être remplacées par des
+// chiffres de client.
+
+interface Props {
+  mock: {
+    title: string;
+    note: string;
+    badge: string;
+    subject: string;
+    date: string;
+    columns: string[];
+    rows: string[][];
+    footTitle: string;
+    foot: string[];
+  };
+}
+
+const { mock } = Astro.props;
+
+/** Un écart nul est conforme ; sinon la ligne est signalée. */
+const isGap = (row: string[]) => row[3] !== '0';
+---
+
+<section class="mock" aria-labelledby="mock-title">
+  <div class="mock__head">
+    <h2 id="mock-title">{mock.title}</h2>
+    <p class="mock__note">{mock.note}</p>
+  </div>
+
+  <div class="frame">
+    <p class="frame__badge">{mock.badge}</p>
+
+    <div class="sheet">
+      <header class="sheet__head">
+        <p class="sheet__subject">{mock.subject}</p>
+        <p class="sheet__date">{mock.date}</p>
+      </header>
+
+      <div class="sheet__scroll">
+        <table>
+          <thead>
+            <tr>
+              {mock.columns.map((c, i) => <th class={i > 0 && i < 4 ? 'num' : ''}>{c}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {
+              mock.rows.map((row) => (
+                <tr class={isGap(row) ? 'flagged' : ''}>
+                  {row.map((cell, i) => (
+                    <td class={i > 0 && i < 4 ? 'num' : ''}>{cell}</td>
+                  ))}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <footer class="sheet__foot">
+        <p class="sheet__foot-title">{mock.footTitle}</p>
+        <ul>
+          {mock.foot.map((f) => <li>{f}</li>)}
+        </ul>
+      </footer>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mock {
+    margin-top: var(--sp-5);
+  }
+
+  .mock__head h2 {
+    font-size: var(--t-xl);
+  }
+
+  .mock__note {
+    margin-top: var(--sp-2);
+    max-width: var(--measure);
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+  }
+
+  .frame {
+    position: relative;
+    margin-top: var(--sp-3);
+    background: var(--paper-2);
+    border: 1px solid var(--rule-strong);
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  .frame__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--gold);
+    color: #fff;
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .sheet {
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: clamp(0.9rem, 2.5vw, 1.6rem);
+    max-width: 46rem;
+  }
+
+  .sheet__head {
+    padding-bottom: var(--sp-2);
+    border-bottom: 2px solid var(--pine);
+  }
+
+  .sheet__subject {
+    font-family: var(--serif);
+    font-size: var(--t-md);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .sheet__date {
+    margin-top: 0.2rem;
+    font-size: var(--t-xs);
+    color: var(--ink-3);
+  }
+
+  .sheet__scroll {
+    margin-top: var(--sp-3);
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--t-xs);
+  }
+
+  th {
+    text-align: left;
+    font-weight: 620;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    padding: 0.4rem 0.6rem 0.4rem 0;
+    border-bottom: 1px solid var(--rule-strong);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.45rem 0.6rem 0.45rem 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    padding-right: var(--sp-3);
+  }
+
+  tbody td:first-child {
+    color: var(--ink);
+  }
+
+  /* Une ligne dont l'écart n'est pas nul demande une décision. */
+  .flagged td {
+    background: color-mix(in srgb, var(--gold) 8%, transparent);
+  }
+
+  .flagged td:last-child {
+    color: var(--gold);
+    font-weight: 560;
+  }
+
+  .sheet__foot {
+    padding-top: var(--sp-3);
+  }
+
+  .sheet__foot-title {
+    font-size: var(--t-xs);
+    font-weight: 620;
+    letter-spacing: 0.03em;
+    color: var(--gold);
+  }
+
+  .sheet__foot ul {
+    margin-top: 0.5rem;
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .sheet__foot li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: var(--t-xs);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  .sheet__foot li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 0.4rem;
+    height: 1px;
+    background: var(--rule-strong);
+  }
+</style>

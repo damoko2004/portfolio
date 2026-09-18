@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseBody from '../../components/CaseBody.astro';
+import MigrationMock from '../../components/MigrationMock.astro';
+import { caseSasR } from '../../data/case-sas-r';
+import { routes } from '../../data/content';
+const c = caseSasR.fr;
+---
+
+<Base
+  lang="fr"
+  title={c.meta.title}
+  description={c.meta.description}
+  altFr={routes.fr.caseSasR}
+  altEn={routes.en.caseSasR}
+>
+  <CaseBody lang="fr" data={c}>
+    <MigrationMock slot="mock" mock={c.mock} />
+  </CaseBody>
+</Base>
