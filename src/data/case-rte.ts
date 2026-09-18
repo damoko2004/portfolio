@@ -189,6 +189,16 @@ export const caseRte = {
       ],
     },
 
+    outcome: {
+      title: 'Ce qui reste, une fois la mission terminée',
+      items: [
+        'Une revue matinale qui arrive seule, y compris les jours où personne n’y pense',
+        'Des règles de détection écrites, rappelées à chaque envoi, donc contestables par les experts',
+        'Une application déployée en production et reprise par les équipes d’exploitation',
+        'Des défauts de source signalés dans le livrable plutôt que masqués',
+        'Une documentation qui permet de reprendre le dispositif sans moi',
+      ],
+    },
     stackTitle: 'Environnement technique',
     stack: ['R', 'R Markdown', 'Shiny', 'RStudio Connect', 'API REST', 'SQL', 'Docker'],
 
@@ -381,6 +391,16 @@ export const caseRte = {
       ],
     },
 
+    outcome: {
+      title: 'What remains once the assignment ends',
+      items: [
+        'A morning review that arrives on its own, including on the days nobody thinks about it',
+        'Written detection rules, restated on every send, so experts can challenge them',
+        'An application deployed in production and taken over by the operations teams',
+        'Source faults reported in the deliverable rather than hidden',
+        'Documentation that lets the team run the system without me',
+      ],
+    },
     stackTitle: 'Technical environment',
     stack: ['R', 'R Markdown', 'Shiny', 'RStudio Connect', 'REST API', 'SQL', 'Docker'],
 

@@ -53,6 +53,19 @@ const r = routes[lang];
     <slot name="mock" />
 
     {
+      c.outcome && (
+        <section class="outcome">
+          <h2>{c.outcome.title}</h2>
+          <ul>
+            {c.outcome.items.map((item: string) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
       c.guide && (
         <section class="guide">
           <div class="guide__text">
@@ -183,6 +196,44 @@ const r = routes[lang];
     font-size: var(--t-sm);
     line-height: 1.6;
     color: var(--ink-2);
+  }
+
+  .outcome {
+    margin-top: var(--sp-5);
+    border-top: 2px solid var(--pine);
+    padding-top: var(--sp-3);
+  }
+
+  .outcome h2 {
+    font-size: var(--t-lg);
+  }
+
+  .outcome ul {
+    margin-top: var(--sp-3);
+    display: grid;
+    gap: 0;
+    max-width: var(--measure);
+  }
+
+  .outcome li {
+    position: relative;
+    padding: 0.7rem 0 0.7rem 1.6rem;
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--t-sm);
+    line-height: 1.55;
+  }
+
+  /* Coche discrète : un résultat acquis, pas une promesse */
+  .outcome li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    width: 0.5rem;
+    height: 0.28rem;
+    border-left: 1.5px solid var(--gold);
+    border-bottom: 1.5px solid var(--gold);
+    transform: rotate(-45deg);
   }
 
   .guide {

@@ -176,6 +176,16 @@ export const caseSasR = {
       meta: 'Version 2.0 - 18 pages',
     },
 
+    outcome: {
+      title: 'Ce qui reste, une fois la mission terminée',
+      items: [
+        'Un patrimoine réécrit aux standards R, lisible par un développeur qui ne connaît pas SAS',
+        'Un registre des écarts, chacun avec sa cause, sa décision et sa validation métier',
+        'Des contrôles qualité exécutés à chaque run, pas seulement pendant la recette',
+        'Des dépendances figées, donc une reproductibilité qui survit aux mises à jour',
+        'Un glossaire SAS vers R et des équipes accompagnées jusqu’à l’autonomie',
+      ],
+    },
     stackTitle: 'Environnement technique',
     stack: ['SAS', 'R', 'renv', 'haven', 'dplyr', 'data.table', 'testthat', 'Quarto', 'Git'],
 
@@ -360,6 +370,16 @@ export const caseSasR = {
       meta: 'Version 2.0 - 18 pages',
     },
 
+    outcome: {
+      title: 'What remains once the assignment ends',
+      items: [
+        'A codebase rewritten to R standards, readable by a developer who does not know SAS',
+        'A register of discrepancies, each with its cause, decision and business sign-off',
+        'Quality controls running on every execution, not only during acceptance testing',
+        'Frozen dependencies, so reproducibility survives package updates',
+        'A SAS-to-R glossary and teams supported through to autonomy',
+      ],
+    },
     stackTitle: 'Technical environment',
     stack: ['SAS', 'R', 'renv', 'haven', 'dplyr', 'data.table', 'testthat', 'Quarto', 'Git'],
 

@@ -159,6 +159,16 @@ export const caseLcl = {
       ],
     },
 
+    outcome: {
+      title: 'Ce qui reste, une fois la mission terminée',
+      items: [
+        'Un référentiel de KPI écrit, avec un propriétaire métier nommé par indicateur',
+        'Un socle multi-sources réconcilié avec les systèmes internes avant toute publication',
+        'Des tableaux de bord alimentés automatiquement, sans production manuelle',
+        'Des mesures d’impact assorties de leur périmètre et de leurs limites',
+        'Des procédures de recette documentées et transmises',
+      ],
+    },
     stackTitle: 'Environnement technique',
     stack: ['SQL', 'Teradata', 'SAS', 'R', 'Dataiku', 'Power BI', 'Excel / VBA'],
 
@@ -326,6 +336,16 @@ export const caseLcl = {
       ],
     },
 
+    outcome: {
+      title: 'What remains once the assignment ends',
+      items: [
+        'A written KPI reference, with a named business owner per indicator',
+        'A multi-source foundation reconciled against internal systems before any publication',
+        'Dashboards fed automatically, with no manual production',
+        'Impact measurements stated with their scope and their limits',
+        'Documented and handed-over acceptance procedures',
+      ],
+    },
     stackTitle: 'Technical environment',
     stack: ['SQL', 'Teradata', 'SAS', 'R', 'Dataiku', 'Power BI', 'Excel / VBA'],
 

@@ -143,6 +143,8 @@ const fr = {
       { href: '#contact', label: 'Contact' },
     ],
     cv: 'CV (PDF)',
+    linkedin: 'Profil LinkedIn',
+    github: 'Profil GitHub',
     menu: 'Menu',
     close: 'Fermer',
     skip: 'Aller au contenu',
@@ -159,8 +161,8 @@ const fr = {
     facts: [
       { label: 'Expérience', value: '10 ans' },
       { label: 'Secteurs', value: 'Banque, énergie, statistique publique, SaaS' },
-      { label: 'Ouvrages publiés', value: '2 en 2026' },
-      { label: 'Open source', value: 'statAfrikR, publié sur le CRAN' },
+      { label: 'Publications', value: 'Auteur de deux ouvrages professionnels' },
+      { label: 'Open source', value: 'Auteur et mainteneur de statAfrikR, sur le CRAN' },
     ],
   },
   workflow: {
@@ -593,6 +595,8 @@ const en: typeof fr = {
       { href: '#contact', label: 'Contact' },
     ],
     cv: 'CV (PDF, in French)',
+    linkedin: 'LinkedIn profile',
+    github: 'GitHub profile',
     menu: 'Menu',
     close: 'Close',
     skip: 'Skip to content',
@@ -609,8 +613,8 @@ const en: typeof fr = {
     facts: [
       { label: 'Experience', value: '10 years' },
       { label: 'Sectors', value: 'Banking, energy, official statistics, SaaS' },
-      { label: 'Books published', value: '2 in 2026' },
-      { label: 'Open source', value: 'statAfrikR, published on CRAN' },
+      { label: 'Publications', value: 'Author of two professional books' },
+      { label: 'Open source', value: 'Author and maintainer of statAfrikR, on CRAN' },
     ],
   },
   workflow: {

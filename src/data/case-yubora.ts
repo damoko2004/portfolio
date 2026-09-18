@@ -135,6 +135,16 @@ export const caseYubora = {
       ],
     },
 
+    outcome: {
+      title: 'Ce qui reste, une fois la mission terminée',
+      items: [
+        'Une vision client unifiée construite avant l’arrivée du volume, pas après',
+        'Un référentiel de KPI documenté dès la première version du produit',
+        'Des modèles interprétables, discutables par des dirigeants non spécialistes',
+        'Des prévisions livrées avec leur intervalle plutôt qu’en chiffre net',
+        'La conformité RGPD traitée à la conception du modèle de données',
+      ],
+    },
     stackTitle: 'Environnement technique',
     stack: ['Python', 'Pandas', 'R', 'SQL', 'PostgreSQL', 'API REST', 'Power BI', 'Git'],
 
@@ -276,6 +286,16 @@ export const caseYubora = {
       ],
     },
 
+    outcome: {
+      title: 'What remains once the assignment ends',
+      items: [
+        'A unified customer view built before the volume arrived, not after',
+        'A documented KPI reference from the product’s first version',
+        'Interpretable models that non-specialist executives can question',
+        'Forecasts delivered with their interval rather than as a clean number',
+        'GDPR compliance handled while designing the data model',
+      ],
+    },
     stackTitle: 'Technical environment',
     stack: ['Python', 'Pandas', 'R', 'SQL', 'PostgreSQL', 'REST API', 'Power BI', 'Git'],
 
