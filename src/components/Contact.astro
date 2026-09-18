@@ -49,6 +49,8 @@ const cv = lang === 'fr' ? links.cvFr : links.cvEn;
         }
       </dl>
 
+      <p class="contact__refs">{t.contact.references}</p>
+
       <div class="contact__actions">
         <a class="btn btn--gold" href={`mailto:${links.email}`}>{t.contact.emailLabel}</a>
         <button
@@ -144,6 +146,12 @@ const cv = lang === 'fr' ? links.cvFr : links.cvEn;
     color: var(--on-pine);
     align-self: center;
     word-break: break-word;
+  }
+
+  .contact__refs {
+    margin-top: var(--sp-3);
+    font-size: var(--t-sm);
+    color: var(--on-pine-2);
   }
 
   .contact__actions {

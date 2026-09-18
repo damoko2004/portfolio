@@ -1,0 +1,154 @@
+---
+import { content, type Lang } from '../data/content';
+import { withBase } from '../utils/url';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+const items = t.testimonials.items;
+---
+
+{
+  items.length > 0 && (
+
+  <section class="section--tight quotes" id="temoignages">
+    <div class="wrap">
+      <h2>{t.testimonials.title}</h2>
+
+      <div class={items.length > 1 ? 'quotes__grid quotes__grid--multi' : 'quotes__grid'}>
+        {
+          items.map((item) => (
+            <figure class="quote">
+              <blockquote>
+                <p>{item.quote}</p>
+              </blockquote>
+              <figcaption>
+                {item.name && <span class="quote__name">{item.name}</span>}
+                <span class="quote__role">{item.role}</span>
+                <span class="quote__org">{item.org}</span>
+                <span class="quote__context">{item.context}</span>
+                {'translated' in item && item.translated && (
+                  <span class="quote__translated">{item.translated}</span>
+                )}
+                {item.caseUrl && (
+                  <a class="link quote__case" href={withBase(item.caseUrl)}>
+                    {item.caseLabel}
+                  </a>
+                )}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  )
+}
+
+<style>
+  .quotes {
+    background: var(--card);
+    border-block: 1px solid var(--rule);
+    padding-block: var(--sp-5);
+  }
+
+  .quotes h2 {
+    font-size: var(--t-lg);
+    padding-bottom: var(--sp-2);
+    border-bottom: 2px solid var(--pine);
+    margin-bottom: var(--sp-4);
+  }
+
+  .quotes__grid--multi {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-5);
+  }
+
+  .quote {
+    margin: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+    gap: var(--sp-5);
+    align-items: start;
+  }
+
+  .quotes__grid--multi .quote {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+
+  blockquote {
+    margin: 0;
+    position: relative;
+    padding-left: var(--sp-3);
+    border-left: 3px solid var(--gold);
+  }
+
+  blockquote p {
+    font-family: var(--serif);
+    font-size: var(--t-md);
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: var(--measure);
+  }
+
+  blockquote p::before {
+    content: '\201C';
+  }
+
+  blockquote p::after {
+    content: '\201D';
+  }
+
+  figcaption {
+    display: grid;
+    gap: 0.25rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--rule);
+    font-size: var(--t-sm);
+  }
+
+  .quote__name {
+    font-weight: 620;
+    color: var(--ink);
+  }
+
+  .quote__role {
+    color: var(--ink-2);
+  }
+
+  .quote__org {
+    font-size: var(--t-xs);
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+
+  .quote__context {
+    margin-top: 0.35rem;
+    font-size: var(--t-xs);
+    color: var(--gold);
+  }
+
+  .quote__translated {
+    font-size: var(--t-xs);
+    color: var(--ink-3);
+    font-style: italic;
+  }
+
+  .quote__case {
+    margin-top: 0.6rem;
+    font-size: var(--t-sm);
+    justify-self: start;
+  }
+
+  @media (max-width: 62rem) {
+    .quotes__grid--multi,
+    .quote {
+      grid-template-columns: 1fr;
+      gap: var(--sp-3);
+    }
+  }
+</style>

@@ -14,7 +14,7 @@ export const links = {
   email: 'diamoko@gmail.com',
   phone: '+33658479506',
   phoneDisplay: '06 58 47 95 06',
-  linkedin: 'https://www.linkedin.com/in/dikers-amoko',
+  linkedin: 'https://www.linkedin.com/in/dikers-amoko-27970082/',
   github: 'https://github.com/damoko2004',
 
   // Package R statAfrikR
@@ -80,6 +80,17 @@ export interface Job {
   current?: boolean;
   caseUrl?: string;
   caseLabel?: string;
+}
+
+export interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  org: string;
+  context: string;
+  caseUrl?: string;
+  caseLabel?: string;
+  translated?: string;
 }
 
 export interface PubItem {
@@ -370,6 +381,27 @@ const fr = {
       },
     ] as Brief[],
   },
+  testimonials: {
+    title: 'Ce qu’en disent les clients',
+    // Aucun témoignage publié pour l'instant : la section ne s'affiche pas
+    // tant que ce tableau est vide.
+    //
+    // CONSENTEMENT - ne publiez un témoignage qu'avec l'accord écrit de son
+    // auteur, et demandez-le AVANT de solliciter le retour : une personne
+    // sait alors qu'elle écrit pour être citée. Conservez la réponse.
+    //
+    // Modèle d'entrée :
+    //   {
+    //     quote: '...',
+    //     name: 'Prénom Nom',     // '' pour n'afficher que la fonction
+    //     role: 'Fonction',
+    //     org: 'Organisation',
+    //     context: 'Mission, période',
+    //     caseUrl: '/etudes-de-cas/rte/',
+    //     caseLabel: 'Lire l’étude de cas',
+    //   },
+    items: [] as Testimonial[],
+  },
   publications: {
     title: 'Publications & open source',
     intro:
@@ -523,6 +555,7 @@ const fr = {
     location: 'Île-de-France, France',
     linkedinLabel: 'LinkedIn',
     cvLabel: 'Télécharger le CV',
+    references: 'Références client disponibles sur demande.',
     copy: 'Copier l’adresse',
     copied: 'Adresse copiée',
   },
@@ -797,6 +830,12 @@ const en: typeof fr = {
       },
     ] as Brief[],
   },
+  testimonials: {
+    title: 'What clients say',
+    // No testimonial published yet: the section stays hidden while this array
+    // is empty. Only publish with the author's written agreement.
+    items: [] as Testimonial[],
+  },
   publications: {
     title: 'Publications & open source',
     intro:
@@ -949,6 +988,7 @@ const en: typeof fr = {
     location: 'Île-de-France, France',
     linkedinLabel: 'LinkedIn',
     cvLabel: 'Download the résumé',
+    references: 'Client references available on request.',
     copy: 'Copy address',
     copied: 'Address copied',
   },
