@@ -173,7 +173,7 @@ export const caseSasR = {
         'La méthode décrite ici est formalisée dans un guide que j’apporte en début de mission : structure de projet, conventions de nommage, gestion des dépendances, équivalences SAS vers R, pièges de sémantique entre les deux langages, stratégie de non-régression, phasage de la migration et checklist de recette. Document générique, sans aucune donnée ni règle de client.',
       cta: 'Télécharger le guide (PDF)',
       url: '/guides/guide-bonnes-pratiques-R-migration-SAS-vers-R-v2.pdf',
-      meta: 'Version 2.0 - 16 pages',
+      meta: 'Version 2.0 - 18 pages',
     },
 
     stackTitle: 'Environnement technique',
@@ -357,7 +357,7 @@ export const caseSasR = {
         'The method described here is formalised in a guide I bring at the start of an engagement: project structure, naming conventions, dependency management, SAS-to-R equivalences, semantic pitfalls between the two languages, non-regression strategy, migration phasing and acceptance checklist. A generic document, with no client data or rules.',
       cta: 'Download the guide (PDF, in French)',
       url: '/guides/guide-bonnes-pratiques-R-migration-SAS-vers-R-v2.pdf',
-      meta: 'Version 2.0 - 16 pages',
+      meta: 'Version 2.0 - 18 pages',
     },
 
     stackTitle: 'Technical environment',
