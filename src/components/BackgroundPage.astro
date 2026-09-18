@@ -1,0 +1,32 @@
+---
+import PageHead from './PageHead.astro';
+import Skills from './Skills.astro';
+import Background from './Background.astro';
+import { pages } from '../data/pages';
+import { routes, type Lang } from '../data/content';
+import { withBase } from '../utils/url';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const b = pages[lang].background;
+const r = routes[lang];
+---
+
+<PageHead eyebrow={b.eyebrow} title={b.title} lede={b.lede} />
+<Skills lang={lang} />
+<Background lang={lang} />
+
+<section class="closing">
+  <div class="wrap">
+    <a class="btn btn--ink" href={withBase(`${r.home}#contact`)}>{b.cta}</a>
+  </div>
+</section>
+
+<style>
+  .closing {
+    background: var(--paper-2);
+    padding-block: var(--sp-4);
+  }
+</style>

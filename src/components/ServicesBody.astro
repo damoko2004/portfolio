@@ -1,6 +1,7 @@
 ---
 import { withBase } from '../utils/url';
 import PageHead from './PageHead.astro';
+import GenAI from './GenAI.astro';
 import { services } from '../data/services';
 import { routes, type Lang } from '../data/content';
 
@@ -38,6 +39,8 @@ const r = routes[lang];
     </div>
   </div>
 </section>
+
+<GenAI lang={lang} />
 
 <section class="section principles">
   <div class="wrap">
