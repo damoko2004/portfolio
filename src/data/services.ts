@@ -12,13 +12,26 @@ export const services = {
         'Six façons de travailler ensemble : cadrage d’une feuille de route data, mise en production d’un modèle, industrialisation d’un existant, product ownership en temps partagé, audit d’une plateforme IA. Île-de-France et à distance.',
     },
     eyebrow: 'Prestations',
-    title: 'Six façons de travailler ensemble',
+    title: 'Sept façons de travailler ensemble',
     lede:
       'Je n’interviens pas sur tout. Les missions ci-dessous correspondent aux situations où dix ans passés sur la chaîne complète de la donnée font une différence mesurable - et où un seul interlocuteur remplace utilement trois prestataires.',
     availability: 'Disponible pour une nouvelle mission - Île-de-France et à distance',
 
     offersTitle: 'Les missions',
     offers: [
+      {
+        title: 'Diagnostic churn & valeur client',
+        duration: '10 jours, au forfait',
+        pitch:
+          'Vous savez que vos données clients ont quelque chose à dire, sans savoir quoi ni ce que ça vaut. Une première étape courte, à périmètre fixe, avant d’engager un projet plus lourd.',
+        deliverables: [
+          'Jours 1 à 2 - ateliers de cadrage avec les équipes métier, inventaire des données réellement disponibles',
+          'Jours 3 à 5 - audit de qualité, construction de la table analytique, premières analyses de cohortes',
+          'Jours 6 à 8 - premier modèle de churn ou de valeur client, segmentation des clients à risque',
+          'Jours 9 à 10 - estimation du revenu récupérable, feuille de route priorisée, restitution au comité',
+          'Vous repartez avec un diagnostic écrit, un modèle reproductible et un plan chiffré - que vous poursuiviez avec moi ou non',
+        ],
+      },
       {
         title: 'Cadrage et feuille de route data / IA',
         duration: '2 à 4 semaines',
@@ -163,13 +176,26 @@ export const services = {
         'Five ways to work together: framing a data roadmap, taking a model to production, industrialising existing work, fractional data product ownership, auditing an AI platform. Paris region and remote.',
     },
     eyebrow: 'Services',
-    title: 'Six ways to work together',
+    title: 'Seven ways to work together',
     lede:
       'I do not take on everything. The engagements below match the situations where ten years across the full data chain make a measurable difference - and where one counterpart usefully replaces three vendors.',
     availability: 'Available for a new engagement - Paris region and remote',
 
     offersTitle: 'Engagements',
     offers: [
+      {
+        title: 'Churn & customer value diagnostic',
+        duration: '10 days, fixed price',
+        pitch:
+          'You know your customer data has something to say, without knowing what or what it is worth. A short first step, with a fixed scope, before committing to a heavier project.',
+        deliverables: [
+          'Days 1 to 2 - framing workshops with business teams, inventory of the data actually available',
+          'Days 3 to 5 - quality audit, analytical table construction, first cohort analyses',
+          'Days 6 to 8 - first churn or customer value model, segmentation of at-risk customers',
+          'Days 9 to 10 - estimate of recoverable revenue, prioritised roadmap, presentation to the committee',
+          'You leave with a written diagnostic, a reproducible model and a costed plan - whether you continue with me or not',
+        ],
+      },
       {
         title: 'Data / AI framing and roadmap',
         duration: '2 to 4 weeks',

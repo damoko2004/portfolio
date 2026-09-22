@@ -68,12 +68,17 @@ const measuredOn = new Intl.DateTimeFormat(locale, {
             {item.magnet && (
               <div class="magnet">
                 <p>{item.magnet.text}</p>
-                <a
-                  class="btn btn--gold magnet__cta"
-                  href={`mailto:${links.email}?subject=${encodeURIComponent(item.magnet.subject)}&body=${encodeURIComponent(item.magnet.body)}`}
-                >
-                  {item.magnet.cta}
-                </a>
+                <p class="magnet__actions">
+                  <a
+                    class="btn btn--gold"
+                    href={`mailto:${links.email}?subject=${encodeURIComponent(item.magnet.subject)}&body=${encodeURIComponent(item.magnet.body)}`}
+                  >
+                    {item.magnet.cta}
+                  </a>
+                  <span class="magnet__mail">
+                    {t.publications.magnetFallback} <b>{links.email}</b>
+                  </span>
+                </p>
               </div>
             )}
 
@@ -245,8 +250,22 @@ const measuredOn = new Intl.DateTimeFormat(locale, {
     color: var(--ink-2);
   }
 
-  .magnet__cta {
+  .magnet__actions {
     margin-top: var(--sp-2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem var(--sp-3);
+  }
+
+  .magnet__mail {
+    font-size: var(--t-xs);
+    color: var(--ink-2);
+  }
+
+  .magnet__mail b {
+    color: var(--ink);
+    font-weight: 560;
   }
 
   .pub__links {

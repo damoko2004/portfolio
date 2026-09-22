@@ -134,9 +134,9 @@ const fr = {
   otherLangLabel: 'English',
   otherLangHref: '/en/',
   meta: {
-    title: 'Dikers Amoko - Data Scientist senior, MLOps & Product Owner Data & IA',
+    title: 'Dikers Amoko - Data Scientist freelance - Churn, valeur client & CRM',
     description:
-      'Dix ans sur la chaîne complète de la donnée : cadrage du besoin, modélisation statistique et machine learning, mise en production et run. Banque, énergie, statistique publique, SaaS. Freelance en Île-de-France et à distance.',
+      'J’aide les entreprises à forte base client à anticiper le churn, mesurer la valeur de leurs clients et activer ces analyses dans leur CRM, du modèle à la mise en production. Freelance, Île-de-France et à distance.',
   },
   nav: {
     items: [
@@ -158,17 +158,17 @@ const fr = {
   hero: {
     available: 'Freelance - disponible pour une nouvelle mission',
     name: 'Dikers Amoko',
-    title: 'Data Scientist senior · Industrialisation · Product Owner Data & IA',
-    verbs: ['Je cadre le besoin.', 'Je conçois le modèle.', 'Je le mets en production.'],
+    title: 'Data Scientist senior · Churn, valeur client & CRM',
+    verbs: ['Je repère les clients à risque.', 'Je construis le score.', 'Je l’active dans votre CRM.'],
     lead:
-      'Dix ans sur la chaîne complète de la donnée, en banque, énergie, statistique publique et SaaS. Trois métiers que l’on confie d’ordinaire à trois personnes, tenus par une seule - avec la culture de traçabilité et de reproductibilité héritée de la banque et de la statistique publique.',
+      'J’aide les entreprises à forte base client - SaaS, banque, assurance, énergie - à anticiper le churn, mesurer la valeur de leurs clients et activer ces analyses dans leurs outils, jusqu’à la preuve du ROI. Dix ans d’expérience, de LCL à un éditeur SaaS en lancement, avec la rigueur héritée de la statistique publique.',
     ctaPrimary: 'Voir les missions',
-    ctaSecondary: 'Réserver un échange',
+    ctaSecondary: 'Réserver un échange de 20 min',
     facts: [
+      { label: 'Auteur', value: '« Ce que vos données savent de vos clients » (2026)' },
       { label: 'Expérience', value: '10 ans' },
-      { label: 'Secteurs', value: 'Banque, énergie, statistique publique, SaaS' },
-      { label: 'Publications', value: 'Auteur de deux ouvrages professionnels' },
-      { label: 'Open source', value: 'Auteur et mainteneur de statAfrikR, sur le CRAN' },
+      { label: 'Secteurs', value: 'SaaS, banque, énergie, statistique publique' },
+      { label: 'Open source', value: 'statAfrikR, publié sur le CRAN' },
     ],
   },
   workflow: {
@@ -212,10 +212,10 @@ const fr = {
     across: ['Traçabilité', 'Documentation', 'Reproductibilité', 'Contrôles qualité', 'Conformité RGPD'],
   },
   roles: {
-    title: 'Trois casquettes, un seul interlocuteur',
+    title: 'Pourquoi un seul interlocuteur',
     intro:
-      'La plupart des projets data échouent aux jonctions : entre le métier et la modélisation, entre le prototype et la production. Je tiens les trois maillons, donc les jonctions disparaissent.',
-    servicesLink: 'Voir les six formats d’intervention',
+      'La plupart des projets de churn échouent aux jonctions : un besoin mal cadré, un modèle qui ne passe jamais en production, un score que personne n’utilise. Je tiens les trois maillons - cadrage métier, modélisation, mise en production - donc les jonctions disparaissent.',
+    servicesLink: 'Voir les sept formats d’intervention',
     items: [
       {
         title: 'Data Scientist',
@@ -426,6 +426,7 @@ const fr = {
       source: 'Source : miroir CRAN de RStudio, qui ne couvre qu’une partie des installations réelles.',
       updated: 'Relevé du',
     },
+    magnetFallback: 'ou écrivez directement à',
     note: 'Les deux ouvrages sont aussi disponibles en version numérique.',
     noteCta: 'Voir la boutique',
     noteUrl: links.ebookStore,
@@ -578,7 +579,7 @@ const fr = {
     copied: 'Adresse copiée',
   },
   footer: {
-    tagline: 'Data Scientist senior · Industrialisation · Product Owner Data & IA',
+    tagline: 'Data Scientist senior · Churn, valeur client & CRM',
     rights: 'Tous droits réservés.',
     linksTitle: 'Aller à',
     pages: [
@@ -620,17 +621,17 @@ const en: typeof fr = {
   hero: {
     available: 'Freelance - available for a new engagement',
     name: 'Dikers Amoko',
-    title: 'Senior Data Scientist · Industrialisation · Data & AI Product Owner',
-    verbs: ['I frame the need.', 'I build the model.', 'I ship it to production.'],
+    title: 'Senior Data Scientist · Churn, customer value & CRM',
+    verbs: ['I spot the customers at risk.', 'I build the score.', 'I activate it in your CRM.'],
     lead:
-      'Ten years across the full data chain, in banking, energy, official statistics and SaaS. Three jobs usually handed to three different people, held by one - with the traceability and reproducibility culture that banking and official statistics demand.',
+      'I help companies with large customer bases - SaaS, banking, insurance, energy - anticipate churn, measure customer value and activate those analyses in their own tools, through to proven ROI. Ten years of experience, from LCL to a SaaS vendor at launch, with the rigour inherited from official statistics.',
     ctaPrimary: 'See the work',
-    ctaSecondary: 'Book a call',
+    ctaSecondary: 'Book a 20-minute call',
     facts: [
+      { label: 'Author', value: '“What your data knows about your customers” (2026)' },
       { label: 'Experience', value: '10 years' },
-      { label: 'Sectors', value: 'Banking, energy, official statistics, SaaS' },
-      { label: 'Publications', value: 'Author of two professional books' },
-      { label: 'Open source', value: 'Author and maintainer of statAfrikR, on CRAN' },
+      { label: 'Sectors', value: 'SaaS, banking, energy, official statistics' },
+      { label: 'Open source', value: 'statAfrikR, published on CRAN' },
     ],
   },
   workflow: {
@@ -674,10 +675,10 @@ const en: typeof fr = {
     across: ['Traceability', 'Documentation', 'Reproducibility', 'Quality controls', 'GDPR compliance'],
   },
   roles: {
-    title: 'Three roles, one counterpart',
+    title: 'Why a single counterpart',
     intro:
-      'Most data projects fail at the seams: between business and modelling, between prototype and production. I hold all three links, so the seams disappear.',
-    servicesLink: 'See the six engagement formats',
+      'Most churn projects fail at the seams: a poorly framed need, a model that never reaches production, a score nobody uses. I hold all three links - business framing, modelling, deployment - so the seams disappear.',
+    servicesLink: 'See the seven engagement formats',
     items: [
       {
         title: 'Data Scientist',
@@ -872,6 +873,7 @@ const en: typeof fr = {
       source: 'Source: the RStudio CRAN mirror, which covers only a share of actual installations.',
       updated: 'Measured on',
     },
+    magnetFallback: 'or write directly to',
     note: 'Both books are also available as ebooks.',
     noteCta: 'Visit the store',
     noteUrl: links.ebookStore,
@@ -1023,7 +1025,7 @@ const en: typeof fr = {
     copied: 'Address copied',
   },
   footer: {
-    tagline: 'Senior Data Scientist · Industrialisation · Data & AI Product Owner',
+    tagline: 'Senior Data Scientist · Churn, customer value & CRM',
     rights: 'All rights reserved.',
     linksTitle: 'Go to',
     pages: [
