@@ -597,9 +597,9 @@ const en: typeof fr = {
   otherLangLabel: 'Français',
   otherLangHref: '/',
   meta: {
-    title: 'Dikers Amoko - Senior Data Scientist, MLOps & Data/AI Product Owner',
+    title: 'Dikers Amoko - Freelance Data Scientist - Churn, customer value & CRM',
     description:
-      'Ten years across the full data chain: framing the business need, statistical and machine learning modelling, production deployment and run. Banking, energy, official statistics, SaaS. Freelance in the Paris region and remote.',
+      'I help companies with large customer bases anticipate churn, measure customer value and activate those analyses in their CRM, from model to production. Freelance, Paris region and remote.',
   },
   nav: {
     items: [

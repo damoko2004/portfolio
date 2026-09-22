@@ -7,14 +7,14 @@
 export const services = {
   fr: {
     meta: {
-      title: 'Prestations freelance - Data Science, MLOps, Product Ownership | Dikers Amoko',
+      title: 'Prestations freelance - Churn, valeur client, mise en production | Dikers Amoko',
       description:
-        'Six façons de travailler ensemble : cadrage d’une feuille de route data, mise en production d’un modèle, industrialisation d’un existant, product ownership en temps partagé, audit d’une plateforme IA. Île-de-France et à distance.',
+        'Sept façons de travailler ensemble, à commencer par un diagnostic churn et valeur client en 10 jours au forfait : cadrage, mise en production d’un modèle, industrialisation, migration SAS vers R, product ownership, audit IA. Île-de-France et à distance.',
     },
     eyebrow: 'Prestations',
     title: 'Sept façons de travailler ensemble',
     lede:
-      'Je n’interviens pas sur tout. Les missions ci-dessous correspondent aux situations où dix ans passés sur la chaîne complète de la donnée font une différence mesurable - et où un seul interlocuteur remplace utilement trois prestataires.',
+      'Je n’interviens pas sur tout. Les missions ci-dessous correspondent aux situations où transformer des données clients en décisions mesurées fait une différence - et où un seul interlocuteur remplace utilement trois prestataires.',
     availability: 'Disponible pour une nouvelle mission - Île-de-France et à distance',
 
     offersTitle: 'Les missions',
@@ -171,14 +171,14 @@ export const services = {
 
   en: {
     meta: {
-      title: 'Freelance services - Data Science, MLOps, Product Ownership | Dikers Amoko',
+      title: 'Freelance services - Churn, customer value, production | Dikers Amoko',
       description:
-        'Five ways to work together: framing a data roadmap, taking a model to production, industrialising existing work, fractional data product ownership, auditing an AI platform. Paris region and remote.',
+        'Seven ways to work together, starting with a 10-day fixed-price churn and customer value diagnostic: framing, taking a model to production, industrialisation, SAS to R migration, product ownership, AI audit. Paris region and remote.',
     },
     eyebrow: 'Services',
     title: 'Seven ways to work together',
     lede:
-      'I do not take on everything. The engagements below match the situations where ten years across the full data chain make a measurable difference - and where one counterpart usefully replaces three vendors.',
+      'I do not take on everything. The engagements below match the situations where turning customer data into measured decisions makes a difference - and where one counterpart usefully replaces three vendors.',
     availability: 'Available for a new engagement - Paris region and remote',
 
     offersTitle: 'Engagements',
