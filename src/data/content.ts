@@ -82,6 +82,8 @@ export interface Job {
   current?: boolean;
   caseUrl?: string;
   caseLabel?: string;
+  /** Ce que la mission a résolu, affiché au-dessus de l'intitulé. */
+  headline?: string;
 }
 
 export interface Testimonial {
@@ -105,6 +107,8 @@ export interface PubItem {
   url: string;
   cta: string;
   extra?: { label: string; url: string }[];
+  /** Appel à l'action attaché à un ouvrage : envoi d'un chapitre sur demande. */
+  magnet?: { text: string; cta: string; subject: string; body: string };
   /** 'cran' : afficher les téléchargements relevés sur le miroir CRAN. */
   live?: 'cran';
 }
@@ -271,6 +275,7 @@ const fr = {
     jobs: [
       {
         period: '01/2026 - aujourd’hui',
+        headline: 'Construire de zéro le dispositif churn et valeur client d’un éditeur SaaS',
         role: 'Associé & Lead Data Scientist - Pôle Customer Intelligence',
         org: 'Yubora',
         sector: 'SaaS',
@@ -289,6 +294,7 @@ const fr = {
       },
       {
         period: '06/2024 - 12/2025',
+        headline: 'Savoir enfin ce que rapporte l’acquisition digitale d’une banque de détail',
         role: 'Consultant Data Scientist - Interface métiers / Data Factory',
         org: 'Banque LCL',
         sector: 'Banque de détail',
@@ -306,6 +312,7 @@ const fr = {
       },
       {
         period: '02/2023 - 01/2024',
+        headline: 'Mettre en production un dispositif de surveillance sur une infrastructure critique',
         role: 'Data Scientist - Supervision des interconnexions électriques',
         org: 'Scalian - mission RTE',
         sector: 'Énergie',
@@ -324,6 +331,7 @@ const fr = {
       },
       {
         period: '10/2021 - 02/2023',
+        headline: 'Fiabiliser une production statistique nationale et migrer son patrimoine SAS vers R',
         role: 'Statisticien - Responsable du référentiel statistique d’entreprises',
         org: 'INSEE',
         sector: 'Statistique publique',
@@ -432,6 +440,12 @@ const fr = {
         facts: ['40 chapitres', '21 cas métiers', '6 projets', '89 blocs de code Python & R', 'Dépôt public reproductible'],
         url: links.bookData,
         cta: 'Voir sur Amazon',
+        magnet: {
+          text: 'Vous travaillez sur un projet de churn ou de valeur client ? Écrivez-moi en précisant votre secteur : je vous envoie le chapitre le plus proche de votre cas.',
+          cta: 'Recevoir un chapitre',
+          subject: 'Demande de chapitre - Ce que vos données savent de vos clients',
+          body: 'Bonjour,\n\nJe travaille sur un projet de churn ou de valeur client dans le secteur suivant :\n\nMon contexte en deux lignes :\n\nMerci,',
+        },
       },
       {
         kind: 'Ouvrage',
@@ -549,9 +563,9 @@ const fr = {
     languages: 'Français, langue de travail. Anglais professionnel : lecture et rédaction technique.',
   },
   contact: {
-    title: 'Parlons de votre chaîne de données',
+    title: 'Vous voulez savoir ce que vos données disent de vos clients ?',
     lead:
-      'Un besoin métier encore flou, un modèle qui ne passe pas en production, une plateforme IA à cadrer ou à challenger : dites-moi où vous en êtes, je vous dis en une conversation ce qui est réaliste.',
+      'En vingt minutes, dites-moi où vous en êtes : je vous dis ce qui est réaliste, avec quelles données et en combien de temps. Un besoin encore flou est un bon point de départ - le cadrage fait partie du travail.',
     availability: 'Disponible pour une nouvelle mission - Île-de-France et à distance',
     emailLabel: 'E-mail',
     phoneLabel: 'Téléphone',
@@ -723,6 +737,7 @@ const en: typeof fr = {
     jobs: [
       {
         period: '01/2026 - present',
+        headline: 'Building a SaaS vendor’s churn and customer value capability from zero',
         role: 'Partner & Lead Data Scientist - Customer Intelligence',
         org: 'Yubora',
         sector: 'SaaS',
@@ -741,6 +756,7 @@ const en: typeof fr = {
       },
       {
         period: '06/2024 - 12/2025',
+        headline: 'Finally knowing what a retail bank’s digital acquisition returns',
         role: 'Data Scientist Consultant - Business / Data Factory interface',
         org: 'Banque LCL',
         sector: 'Retail banking',
@@ -757,6 +773,7 @@ const en: typeof fr = {
       },
       {
         period: '02/2023 - 01/2024',
+        headline: 'Putting a monitoring system into production on critical infrastructure',
         role: 'Data Scientist - Electricity interconnection monitoring',
         org: 'Scalian - RTE assignment',
         sector: 'Energy',
@@ -775,6 +792,7 @@ const en: typeof fr = {
       },
       {
         period: '10/2021 - 02/2023',
+        headline: 'Making a national statistical production dependable and migrating its SAS codebase to R',
         role: 'Statistician - Head of the business statistics reference',
         org: 'INSEE',
         sector: 'Official statistics',
@@ -868,6 +886,12 @@ const en: typeof fr = {
         facts: ['40 chapters', '21 business cases', '6 projects', '89 Python & R code blocks', 'Public reproducible repository'],
         url: links.bookData,
         cta: 'View on Amazon',
+        magnet: {
+          text: 'Working on a churn or customer value project? Write to me with your sector and I will send you the chapter closest to your case.',
+          cta: 'Request a chapter',
+          subject: 'Chapter request - What your data knows about your customers',
+          body: 'Hello,\n\nI am working on a churn or customer value project in the following sector:\n\nMy context in two lines:\n\nThank you,',
+        },
       },
       {
         kind: 'Book',
@@ -984,9 +1008,9 @@ const en: typeof fr = {
     languages: 'French, working language. Professional English: technical reading and writing.',
   },
   contact: {
-    title: 'Let’s talk about your data chain',
+    title: 'Want to know what your data says about your customers?',
     lead:
-      'A business need that is still fuzzy, a model that never reaches production, an AI platform to frame or to challenge: tell me where you stand and I will tell you in one conversation what is realistic.',
+      'In twenty minutes, tell me where you stand: I will tell you what is realistic, with which data and in how long. A need that is still fuzzy is a good starting point - framing is part of the work.',
     availability: 'Available for a new engagement - Paris region and remote',
     emailLabel: 'Email',
     phoneLabel: 'Phone',

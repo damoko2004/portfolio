@@ -1,5 +1,5 @@
 ---
-import { content, type Lang } from '../data/content';
+import { content, links, type Lang } from '../data/content';
 import cran from '../data/cran-stats.json';
 
 interface Props {
@@ -65,6 +65,18 @@ const measuredOn = new Intl.DateTimeFormat(locale, {
                 </p>
               </div>
             )}
+            {item.magnet && (
+              <div class="magnet">
+                <p>{item.magnet.text}</p>
+                <a
+                  class="btn btn--gold magnet__cta"
+                  href={`mailto:${links.email}?subject=${encodeURIComponent(item.magnet.subject)}&body=${encodeURIComponent(item.magnet.body)}`}
+                >
+                  {item.magnet.cta}
+                </a>
+              </div>
+            )}
+
             <div class="pub__links">
               {item.url && (
                 <a class="link pub__cta" href={item.url} rel="noopener" target="_blank">
@@ -218,6 +230,23 @@ const measuredOn = new Intl.DateTimeFormat(locale, {
     font-size: var(--t-xs);
     line-height: 1.45;
     color: var(--ink-3);
+  }
+
+  .magnet {
+    margin-top: var(--sp-3);
+    padding: var(--sp-3);
+    background: var(--band);
+    border-left: 3px solid var(--gold);
+  }
+
+  .magnet p {
+    font-size: var(--t-sm);
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+
+  .magnet__cta {
+    margin-top: var(--sp-2);
   }
 
   .pub__links {
